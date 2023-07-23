@@ -1,0 +1,38 @@
+{
+    "save" : "Save data",
+    "one error" : "There is one form error",
+    "errors" : "There are {0} form errors",
+    "network status" : "You are offline",
+    "cancel": "Cancel",
+    "sidebar" : {
+        "dashboard": "Dashboard",
+        "users": "Users",
+        "settings" : "Settings page"
+    },
+    "login" : {
+        "title" : "Sign in to platform",
+        "email" : "Email",
+        "password" : "Password",
+        "remember" : "Remember me",
+        "button" : "Log in"
+    },
+    "navbar": {
+        "notifications": "Notifications",
+        "all notifications": "View all",
+        "apps": "Apps",
+        "toggle mode": "Toggle mode",
+        "profile": "Profile",
+        "logout": "Sign out"
+    },
+    "users": {
+        "title" : "Users",
+        "search" : "Search by username",
+        "create" : "Create user",
+        "username" : "Username",
+        "email" : "Email",
+        "password" : "Password",
+        "admin" : "Admin",
+        "user" : "User",
+        "type" : "Permission"
+    }
+}
