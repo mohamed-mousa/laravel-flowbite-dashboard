@@ -1,36 +1,65 @@
 <script setup>
-import { TrashIcon, PlusIcon, PencilSquareIcon } from "@heroicons/vue/24/solid";
+import { WrenchScrewdriverIcon } from "@heroicons/vue/24/outline";
 import {
     Drawer,
     DrawerButton,
     DrawerCancel,
+    useHideDrawer,
 } from "@/Components/Drawer/Drawer.js";
+import MultiDelete from "@/Components/Buttons/MultiDelete.vue";
+import SingleDelete from "@/Components/Buttons/SingleDelete.vue";
+import { useFormatDate } from "@/Composables/FormatDate.js";
+import { useMultiSelect } from "@/Composables/MultiSelect.js";
 import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
-import { useFormatDate } from "@/Composables/FormatDate.js";
 
-defineProps({ users: Object, filters: Object });
+const props = defineProps({
+    users: Object,
+    filters: Object,
+});
 
-const isEdit = ref(false);
 const form = useForm({
     email: null,
     password: null,
     type: null,
     name: null,
+    id: null,
 });
+
+const isEdit = ref(false);
+
+const { selected, selectAll } = useMultiSelect(props.users.data);
 
 const reset = () => {
     form.reset();
     form.clearErrors();
+    selected.value = [];
     isEdit.value = false;
 };
 
+const editAction = (user) => {
+    isEdit.value = true;
+    form.email = user.email;
+    form.type = user.type;
+    form.id = user.id;
+    form.name = user.name;
+};
+
 const submit = () => {
-    form.post(route("user.store"), {
-        onSuccess() {
-            reset();
-        },
-    });
+    if (isEdit.value) {
+        form.put(route("user.update", form.id), {
+            onSuccess() {
+                reset();
+                useHideDrawer();
+            },
+        });
+    } else {
+        form.post(route("user.store"), {
+            onSuccess() {
+                reset();
+            },
+        });
+    }
 };
 </script>
 
@@ -58,9 +87,11 @@ const submit = () => {
                         </div>
                         <div class="filter-options">
                             <div class="filter-inputs">
-                                <span class="icon-style">
-                                    <TrashIcon class="h-6 w-6" />
-                                </span>
+                                <MultiDelete
+                                    url="users.destroy"
+                                    :ids="selected"
+                                    @deleted="reset()"
+                                />
                             </div>
                         </div>
                     </div>
@@ -74,7 +105,6 @@ const submit = () => {
                         <PlusIcon class="h-5 w-5 me-1" />
                     </DrawerButton>
                     <Drawer id="users-drawer" :title="$t('users.create')">
-                        <FlashMessages />
                         <form @submit.prevent="submit">
                             <div class="mb-4">
                                 <TextInput
@@ -108,7 +138,6 @@ const submit = () => {
                                 <TextInput
                                     type="password"
                                     v-model="form.password"
-                                    required
                                     :placeholder="$t('users.password')"
                                     :error="form.errors.password"
                                 />
@@ -119,16 +148,16 @@ const submit = () => {
                             </div>
                             <div class="mb-4">
                                 <SelectInput
-                                    v-model="form.type"
+                                    v-model.number="form.type"
                                     :error="form.errors.type"
                                 >
                                     <option disabled value="">
                                         {{ $t("users.type") }}
                                     </option>
-                                    <option value="admin">
+                                    <option value="1">
                                         {{ $t("users.admin") }}
                                     </option>
-                                    <option value="user">
+                                    <option value="2">
                                         {{ $t("users.user") }}
                                     </option>
                                 </SelectInput>
@@ -140,7 +169,7 @@ const submit = () => {
                                     :title="$t('save')"
                                 />
                                 <DrawerCancel
-                                    @click="reset"
+                                    @click="reset()"
                                     drawer="users-drawer"
                                 />
                             </div>
@@ -149,158 +178,95 @@ const submit = () => {
                 </template>
             </Header>
         </template>
-        <div class="flex flex-col">
-            <div class="overflow-x-auto">
-                <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden shadow">
-                        <table
-                            class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600"
+        <DataTable :length="props.users.data.length">
+            <template #head>
+                <th>
+                    <Checkbox
+                        v-model:checked="selectAll"
+                        class="w-4 h-4"
+                        name="selectAll"
+                    />
+                </th>
+                <th>{{ $t("users.username") }}</th>
+                <th>{{ $t("users.type") }}</th>
+                <th>{{ $t("users.created") }}</th>
+                <th>{{ $t("users.status") }}</th>
+                <th>{{ $t("actions") }}</th>
+            </template>
+            <template #body>
+                <tr v-for="user in props.users.data">
+                    <td class="w-4 p-4">
+                        <div class="flex items-center">
+                            <Checkbox
+                                :value="user.id"
+                                class="w-4 h-4"
+                                name="select"
+                                v-model:checked="selected"
+                            />
+                        </div>
+                    </td>
+                    <td class="flex">
+                        <img
+                            class="w-10 h-10 rounded-full me-3"
+                            src="/images/avatar.jpg"
+                            alt="avatar"
+                        />
+                        <div
+                            class="text-sm font-normal text-gray-500 dark:text-gray-400"
                         >
-                            <thead class="bg-gray-100 dark:bg-gray-700">
-                                <tr>
-                                    <th scope="col" class="p-4">
-                                        <div class="flex items-center">
-                                            <input
-                                                id="checkbox-all"
-                                                aria-describedby="checkbox-1"
-                                                type="checkbox"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                                            />
-                                            <label
-                                                for="checkbox-all"
-                                                class="sr-only"
-                                                >checkbox</label
-                                            >
-                                        </div>
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        class="p-4 text-xs font-medium text-start text-gray-500 uppercase dark:text-gray-400"
-                                    >
-                                        Name
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        class="p-4 text-xs font-medium text-start text-gray-500 uppercase dark:text-gray-400"
-                                    >
-                                        Type
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        class="p-4 text-xs font-medium text-start text-gray-500 uppercase dark:text-gray-400"
-                                    >
-                                        created
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        class="p-4 text-xs font-medium text-start text-gray-500 uppercase dark:text-gray-400"
-                                    >
-                                        Status
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        class="p-4 text-xs font-medium text-start text-gray-500 uppercase dark:text-gray-400"
-                                    >
-                                        Actions
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody
-                                class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
+                            <div
+                                class="text-base font-semibold text-gray-900 dark:text-white"
                             >
-                                <tr
-                                    v-for="user in users.data"
-                                    class="hover:bg-gray-100 dark:hover:bg-gray-700"
-                                >
-                                    <td class="w-4 p-4">
-                                        <div class="flex items-center">
-                                            <input
-                                                id="checkbox-{{ user.id }}"
-                                                aria-describedby="checkbox-1"
-                                                type="checkbox"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                                            />
-                                            <label
-                                                for="checkbox-{{ user.id }}"
-                                                class="sr-only"
-                                                >checkbox</label
-                                            >
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="flex items-center p-4 me-12 space-x-6 whitespace-nowrap"
-                                    >
-                                        <img
-                                            class="w-10 h-10 rounded-full me-3"
-                                            src="/images/avatar.jpg"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            class="text-sm font-normal text-gray-500 dark:text-gray-400"
-                                        >
-                                            <div
-                                                class="text-base font-semibold text-gray-900 dark:text-white"
-                                            >
-                                                {{ user.name }}
-                                            </div>
-                                            <div
-                                                class="text-sm font-normal text-gray-500 dark:text-gray-400"
-                                            >
-                                                {{ user.email }}
-                                            </div>
-                                        </div>
-                                    </td>
+                                {{ user.name }}
+                            </div>
+                            <div
+                                class="text-sm font-normal text-gray-500 dark:text-gray-400"
+                            >
+                                {{ user.email }}
+                            </div>
+                        </div>
+                    </td>
 
-                                    <td
-                                        class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                                    >
-                                        {{ user.type }}
-                                    </td>
-                                    <td
-                                        class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                                    >
-                                        {{ useFormatDate(user.created_at) }}
-                                    </td>
+                    <td>
+                        <span v-if="user.type == 1">{{
+                            $t("users.admin")
+                        }}</span>
+                        <span v-if="user.type == 2">{{
+                            $t("users.user")
+                        }}</span>
+                    </td>
+                    <td>
+                        {{ useFormatDate(user.created_at) }}
+                    </td>
 
-                                    <td
-                                        class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white"
-                                    >
-                                        <!-- <div class="flex items-center">
-                                            {{ if eq .status "Active" }}
-                                            <div
-                                                class="h-2.5 w-2.5 rounded-full bg-green-400 me-2"
-                                            ></div>
-                                            {{ else }}
-                                            <div
-                                                class="h-2.5 w-2.5 rounded-full bg-red-500 me-2"
-                                            ></div>
-                                            {{ end }} {{ .status }}
-                                        </div> -->
-                                    </td>
-                                    <td
-                                        class="p-4 ps-0 justify-around whitespace-nowrap flex"
-                                    >
-                                        <PrimaryButton
-                                            title="تعديل"
-                                            type="button"
-                                        >
-                                            <PencilSquareIcon
-                                                class="me-1 w-5 h-5"
-                                            />
-                                        </PrimaryButton>
-                                        <DangerButton
-                                            title="تعديل"
-                                            type="button"
-                                        >
-                                            <TrashIcon class="me-1 w-5 h-5" />
-                                        </DangerButton>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <td>
+                        <div class="flex items-center">
+                            <div
+                                v-if="user.status"
+                                class="h-3.5 w-3.5 rounded-full bg-green-400 me-2"
+                            ></div>
+                            <div
+                                v-else
+                                class="h-3.5 w-3.5 rounded-full bg-red-500 me-2"
+                            ></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span
+                            data-drawer-target="users-drawer"
+                            data-drawer-show="users-drawer"
+                            aria-controls="users-drawer"
+                            data-tooltip-target="edit-tooltip"
+                            class="icon-style me-3"
+                            @click="editAction(user)"
+                        >
+                            <WrenchScrewdriverIcon class="h-6 w-6" />
+                        </span>
+                        <Tooltip id="edit-tooltip" :title="$t('edit')" />
+                        <SingleDelete url="user.destroy" :id="user.id" />
+                    </td>
+                </tr>
+            </template>
+        </DataTable>
     </AuthLayout>
 </template>

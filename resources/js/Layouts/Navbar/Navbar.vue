@@ -8,7 +8,7 @@ import {
     Bars4Icon,
     XMarkIcon,
     MagnifyingGlassIcon,
-} from "@heroicons/vue/24/solid";
+} from "@heroicons/vue/24/outline";
 </script>
 
 <template>
@@ -35,12 +35,12 @@ import {
                         <ApplicationLogo
                             class="w-12 h-12 me-3 fill-current text-gray-500"
                         />
-                        <span class="app-title">Clint name </span>
+                        <span class="website-title">Clint name </span>
                     </a>
-                    <form class="hidden lg:block lg:pl-3.5">
+                    <form class="hidden lg:block lg:ps-3.5">
                         <div class="relative mt-1 lg:w-96">
                             <div
-                                class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                                class="absolute inset-y-0 end-0 flex items-center pe-3 pointer-events-none"
                             >
                                 <MagnifyingGlassIcon
                                     class="w-5 h-5 text-gray-500 dark:text-gray-400"

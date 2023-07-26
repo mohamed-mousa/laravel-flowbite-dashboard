@@ -1,5 +1,5 @@
 <script setup>
-import { MoonIcon, SunIcon } from "@heroicons/vue/24/solid";
+import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
 import { useDark, useToggle } from "@vueuse/core";
 const isDark = useDark();
 const toggleDark = useToggle(isDark);

@@ -1,5 +1,5 @@
 <script setup>
-import { ChevronDownIcon } from "@heroicons/vue/24/solid";
+import { ChevronDownIcon } from "@heroicons/vue/24/outline";
 const props = defineProps({
     links: {
         type: Array,
@@ -31,7 +31,7 @@ const active = props.links.some((el) => el.url === route().current());
                 sidebar-toggle-item
                 >{{ title }}</span
             >
-            <ChevronDownIcon sidebar-toggle-item class="w-6 h-6" />
+            <ChevronDownIcon sidebar-toggle-item class="w-5 h-5" />
         </button>
         <ul :id="id" :class="!active ? 'hidden' : ''" class="py-2 space-y-2">
             <li v-for="link in links">

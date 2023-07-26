@@ -23,7 +23,7 @@
         @apply  p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ;
       }
 
-      .app-title {
+      .website-title {
         @apply  self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-gray-300 ;
       }
 
@@ -189,5 +189,34 @@
 
       .filter-container {
         @apply flex items-center mb-4 sm:mb-0 
+      }
+
+
+      .data-table table  {
+        @apply min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600
+      }
+
+      .data-table table thead {
+        @apply bg-gray-100 dark:bg-gray-700
+      }
+
+      .data-table table tbody {
+        @apply bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700
+      }
+
+      .data-table table thead tr th {
+        @apply p-4 text-xs font-medium text-start text-gray-500 uppercase dark:text-gray-400
+      }
+
+      .data-table table tbody tr {
+        @apply hover:bg-gray-50 dark:hover:bg-gray-900
+      }
+
+      .data-table table tbody tr td {
+        @apply p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white
+      }
+
+      .confirm {
+        @apply text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2
       }
   } 

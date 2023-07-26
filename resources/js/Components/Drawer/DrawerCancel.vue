@@ -1,6 +1,5 @@
 <script setup>
 import { XMarkIcon } from "@heroicons/vue/24/solid";
-import { usePage } from "@inertiajs/vue3";
 
 defineProps({
     drawer: {

@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as filtersRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
@@ -17,8 +19,10 @@ class UserController extends Controller
         $filters = filtersRequest::all('keyword');
         return Inertia::render('Users', [
             'filters' => $filters,
-            'users' => User::select('id', 'name', 'email', 'type', 'created_at')
+            'users' => User::select('id', 'name', 'email', 'type', 'created_at', 'status')
+                ->whereNot('id', auth()->user()->id)
                 ->filter($filters)
+                ->orderBy('created_at', 'DESC')
                 ->paginate(20)->onEachSide(0)
                 ->withQueryString()
         ]);
@@ -34,18 +38,36 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return Redirect::back()->with('success', __('messages.user.created'));
+        return Redirect::back()->with('success', __('messages.created'));
     }
 
 
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->type = $request->type;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        return Redirect::back()->with('success', __('messages.updated'));
     }
 
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return Redirect::back()->with('success', __('messages.deleted'));
+    }
+
+    public function delete(Request $request)
+    {
+        if ($request->ids) {
+            User::whereIn('id', Arr::wrap($request->ids))->delete();
+        }
+        return Redirect::back()->with('success', __('messages.deleted'));
     }
 }

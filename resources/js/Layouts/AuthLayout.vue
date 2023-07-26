@@ -11,6 +11,7 @@ onMounted(() => {
 
 <template>
     <NetworkStatus />
+    <FlashMessages />
 
     <!-- Page Content -->
     <main class="bg-gray-50 dark:bg-gray-900">

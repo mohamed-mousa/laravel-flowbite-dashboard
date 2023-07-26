@@ -13,7 +13,9 @@ import { Link } from '@inertiajs/vue3';
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import Header from "@/Layouts/Header/Header.vue";
 import HeaderLi from "@/Layouts/Header/HeaderLi.vue";
+import ConfirmModel from "@/Components/ConfirmModal/Modal.vue";
 
+import DataTable from "@/Components/Table/DataTable.vue";
 import FlashMessages from "@/Components/FlashMessages.vue";
 import Tooltip from "@/Components/Tooltip.vue";
 import Checkbox from "@/Components/Form/Checkbox.vue";
@@ -24,6 +26,10 @@ import Btn from "@/Components/Buttons/Btn.vue";
 import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
 import DangerButton from "@/Components/Buttons/DangerButton.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
+import {
+    TrashIcon,
+    PlusIcon,
+} from "@heroicons/vue/24/outline";
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 const messages = {
@@ -47,6 +53,10 @@ createInertiaApp({
             .component("InputLabel", InputLabel)
             .component("PrimaryButton", PrimaryButton)
             .component("DangerButton", DangerButton)
+            .component("DataTable", DataTable)
+            .component("TrashIcon", TrashIcon)
+            .component("PlusIcon", PlusIcon)
+            .component("ConfirmModel", ConfirmModel)
             .component("Btn", Btn)
             .component("TextInput", TextInput)
             .component("SelectInput", SelectInput)

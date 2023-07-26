@@ -8,7 +8,7 @@ import {
     ChartPieIcon,
     NewspaperIcon,
     Cog8ToothIcon,
-} from "@heroicons/vue/24/solid";
+} from "@heroicons/vue/24/outline";
 
 const layoutsLinks = [
     { name: "Stacked", url: "profile.edit" },

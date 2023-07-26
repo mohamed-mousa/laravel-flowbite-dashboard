@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|max:50|min:3',
             'email' => 'required|max:50|email|unique:users',
             'password' => 'required|min:6',
-            'type' => ['nullable', 'string',  Rule::in(['admin', 'user']),]
+            'type' => ['nullable',  Rule::in([1, 2]),]
         ];
     }
 }

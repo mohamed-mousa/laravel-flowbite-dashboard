@@ -3,9 +3,7 @@
 // lang/en/messages.php
 
 return [
-    'user' => [
-        'created' => 'تم اضافة المستخدم',
-        'updated' => 'تم تعديل المستخدم',
-        'deleted' => 'تم الحذف',
-    ],
+    'created' => 'تم الاضافة ',
+    'updated' => 'تم التعديل ',
+    'deleted' => 'تم الحذف',
 ];
