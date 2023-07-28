@@ -21,7 +21,8 @@ const props = defineProps({
 const form = useForm({
     email: null,
     password: null,
-    type: null,
+    type: 2,
+    status: 1,
     name: null,
     id: null,
 });
@@ -41,6 +42,7 @@ const editAction = (user) => {
     isEdit.value = true;
     form.email = user.email;
     form.type = user.type;
+    form.status = user.status;
     form.id = user.id;
     form.name = user.name;
 };
@@ -178,7 +180,13 @@ const submit = () => {
                 </template>
             </Header>
         </template>
-        <DataTable :length="props.users.data.length">
+        <DataTable
+            :length="props.users.data.length"
+            :total="props.users.total"
+            :links="props.users.links"
+            :from="props.users.from"
+            :to="props.users.to"
+        >
             <template #head>
                 <th>
                     <Checkbox

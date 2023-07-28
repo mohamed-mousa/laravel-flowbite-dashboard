@@ -30,7 +30,7 @@ const props = defineProps({
                 </button>
                 <div class="p-6 text-center">
                     <ExclamationCircleIcon
-                        class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                        class="mx-auto mb-4 text-red-400 w-12 h-12 dark:text-red-200"
                     />
                     <h3
                         class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"

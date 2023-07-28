@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::post('delete-users', [UserController::class, 'delete'])->name('users.destroy');
 
-    Route::get('profile', [UserController::class, 'profile'])->name('profile');
-    Route::post('user-profile', [UserController::class, 'update_profile'])->name('profile.update');
-    Route::post('removecover', [UserController::class, 'remove_cover'])->name('profile.removecover');
-    Route::post('removeavatar', [UserController::class, 'remove_avatar'])->name('profile.removeavatar');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'avatar'])->name('profile.avatar');
+    Route::delete('/profile-avatar-remove', [ProfileController::class, 'avatar_remove'])->name('profile.avatar.remove');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

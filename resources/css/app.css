@@ -24,7 +24,7 @@
       }
 
       .website-title {
-        @apply  self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-gray-300 ;
+        @apply  self-center text-xl font-semibold sm:inline hidden sm:text-2xl whitespace-nowrap dark:text-gray-300 ;
       }
 
       .toggleSidebarMobile {

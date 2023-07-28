@@ -1,47 +1,33 @@
 <script setup>
-import AuthLayout from "@/Layouts/AuthLayout.vue";
-import DeleteUserForm from "./Partials/DeleteUserForm.vue";
-import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";
-import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
-import { Head } from "@inertiajs/vue3";
-
-defineProps({
-    mustVerifyEmail: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
+import {
+    UpdateProfileInformationForm,
+    UpdatePasswordForm,
+    UpdateProfilePicture,
+} from "./Partials/profile.js";
 </script>
 
 <template>
-    <Head title="Profile" />
+    <Head :title="$t('profile.title')" />
 
     <AuthLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profile
-            </h2>
+            <Header :title="$t('profile.title')">
+                <HeaderLi
+                    :title="$t('sidebar.dashboard')"
+                    :isHome="true"
+                    :url="'dashboard'"
+                />
+                <HeaderLi :title="$t('sidebar.users')" :url="'user'" />
+                <HeaderLi :title="$t('profile.link')" :isActive="true" />
+            </Header>
         </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class="max-w-xl"
-                    />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdatePasswordForm class="max-w-xl" />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <DeleteUserForm class="max-w-xl" />
-                </div>
+        <div
+            class="grid grid-cols-1 px-4 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900"
+        >
+            <UpdateProfilePicture />
+            <div class="col-span-2">
+                <UpdateProfileInformationForm />
+                <UpdatePasswordForm />
             </div>
         </div>
     </AuthLayout>

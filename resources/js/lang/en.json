@@ -8,7 +8,12 @@
     "delete confirm" : "Are you sure you want to delete",
     "edit": "Edit",
     "actions" : "Actions",
-    "no data" : "No data found", 
+    "no data" : "No data found",
+    "file large" : "Unable to upload because the file is too large",
+    "previous" : "Previous",
+    "next" : "Next",
+    "showing" : "Showing",
+    "of" : "of",
     "sidebar" : {
         "dashboard": "Dashboard",
         "users": "Users",
@@ -41,5 +46,20 @@
         "user" : "User",
         "created" : "Created at",
         "status" : "Status"
+    },
+    "profile" : {
+        "link": "My profile",
+        "title": "Profile",
+        "information" : "General information",
+        "name" : "Name",
+        "email" : "Email",
+        "phone" : "Phone",
+        "password information" : "Password information",
+        "current" : "Current Password",
+        "new" : "New Password",
+        "confirm" : "Confirm Password",
+        "picture" : "Profile picture",
+        "picture size" : "JPG, GIF or PNG. Max size of 800K",
+        "picture upload" : "Upload picture"
     }
 }

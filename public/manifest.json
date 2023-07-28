@@ -1,0 +1,17 @@
+{
+    "name": "M&M",
+    "short_name": "LPT",
+    "start_url": "/index.php",
+    "background_color": "#1D4ED8",
+    "description": "M&M",
+    "display": "fullscreen",
+    "theme_color": "#1D4ED8",
+    "icons": [
+        {
+            "src": "images/pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

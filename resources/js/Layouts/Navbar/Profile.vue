@@ -10,20 +10,17 @@
                 aria-expanded="false"
                 data-dropdown-toggle="profile-dropdown"
             >
-                <img
-                    src="/images/avatar.jpg"
-                    :alt="$page.props.auth.user.name"
-                />
+                <img src="/images/avatar.jpg" :alt="$page.props.user.name" />
             </Btn>
         </div>
         <!-- Dropdown menu -->
         <div class="profile-dropdown" id="profile-dropdown">
             <div role="none">
                 <p class="name" role="none">
-                    {{ $page.props.auth.user.name }}
+                    {{ $page.props.user.name }}
                 </p>
                 <p class="email" role="none">
-                    {{ $page.props.auth.user.email }}
+                    {{ $page.props.user.email }}
                 </p>
             </div>
             <ul role="none">
