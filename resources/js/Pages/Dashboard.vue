@@ -1,7 +1,4 @@
-<script setup>
-import { TrashIcon } from "@heroicons/vue/24/solid";
-import MultiFilter from "@/Components/MultiFilter.vue";
-</script>
+<script setup></script>
 
 <template>
     <Head title="Dashboard" />

@@ -1,13 +1,11 @@
-<script setup>
-import { BellIcon, EyeIcon } from "@heroicons/vue/24/solid";
-</script>
+<script setup></script>
 
 <template>
     <Btn
         data-dropdown-toggle="notification-dropdown"
         class="notifications-toggle"
     >
-        <BellIcon />
+        <icon name="hi-solid-bell" />
     </Btn>
     <!-- Dropdown menu -->
     <div class="narbar-dropdowns" id="notification-dropdown">
@@ -31,7 +29,7 @@ import { BellIcon, EyeIcon } from "@heroicons/vue/24/solid";
         </div>
         <Link href="#" class="all-notifications-link">
             <div>
-                <EyeIcon />
+                <icon name="hi-solid-eye" />
                 {{ $t("navbar.all notifications") }}
             </div>
         </Link>

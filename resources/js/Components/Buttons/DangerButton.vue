@@ -1,6 +1,4 @@
 <script setup>
-import { ArrowPathRoundedSquareIcon } from "@heroicons/vue/24/solid";
-
 defineProps({
     loading: {
         type: Boolean,
@@ -21,7 +19,8 @@ defineProps({
         :disabled="loading"
         class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150"
     >
-        <ArrowPathRoundedSquareIcon
+        <icon
+            name="ri-loader2-line"
             v-if="loading"
             class="inline w-4 h-4 me-3 text-gray-200 animate-spin dark:text-gray-600"
         />

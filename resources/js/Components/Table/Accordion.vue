@@ -1,7 +1,6 @@
 <script setup>
 import { initAccordions } from "flowbite";
 import { onMounted } from "vue";
-import { ChevronDownIcon } from "@heroicons/vue/24/solid";
 
 onMounted(() => {
     initAccordions();
@@ -33,7 +32,7 @@ const props = defineProps({
                 aria-expanded="false"
                 :aria-controls="`accordion${props.accordion}-body-3`"
             >
-                <ChevronDownIcon class="w-5 h-5" />
+                <icon name="hi-chevron-down" class="w-5 h-5" />
             </button>
         </h2>
         <div

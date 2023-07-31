@@ -1,5 +1,4 @@
 <script setup>
-import { InformationCircleIcon } from "@heroicons/vue/24/solid";
 import Paginate from "./Paginate.vue";
 defineProps(["length", "total", "links", "from", "to"]);
 </script>
@@ -26,7 +25,7 @@ defineProps(["length", "total", "links", "from", "to"]);
             v-if="length < 1"
             class="text-xl text-center py-10 font-semibold text-gray-500 dark:text-gray-300"
         >
-            <InformationCircleIcon class="w-7 h-7 mx-auto" />
+            <icon name="hi-solid-information-circle" class="w-7 h-7 mx-auto" />
             {{ $t("no data") }}
         </h1>
 

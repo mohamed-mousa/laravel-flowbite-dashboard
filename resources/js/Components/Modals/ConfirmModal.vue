@@ -1,5 +1,4 @@
 <script setup>
-import { ExclamationCircleIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 const props = defineProps({
     id: {
         type: String,
@@ -25,11 +24,12 @@ const props = defineProps({
                     class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     :data-modal-hide="id"
                 >
-                    <XMarkIcon class="w-6 h-6" />
+                    <icon name="hi-solid-x" class="w-6 h-6" />
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="p-6 text-center">
-                    <ExclamationCircleIcon
+                    <icon
+                        name="hi-solid-information-circle"
                         class="mx-auto mb-4 text-red-400 w-12 h-12 dark:text-red-200"
                     />
                     <h3

@@ -1,6 +1,4 @@
 <script setup>
-// hero icons
-import { PencilSquareIcon } from "@heroicons/vue/24/solid";
 import {
     Drawer,
     DrawerButton,
@@ -392,7 +390,7 @@ onMounted(() => {
                             class="icon-style me-3"
                             @click="editAction(user)"
                         >
-                            <PencilSquareIcon class="h-6 w-6" />
+                            <icon name="fa-pen-square" class="h-6 w-6" />
                         </span>
                         <Tooltip id="edit-tooltip" :title="$t('edit')" />
                         <SingleDelete
@@ -523,7 +521,8 @@ onMounted(() => {
                                                 class="icon-style me-3"
                                                 @click="editAction(user)"
                                             >
-                                                <PencilSquareIcon
+                                                <icon
+                                                    name="fa-pen-square"
                                                     class="h-6 w-6"
                                                 />
                                             </span>

@@ -10,8 +10,8 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { Head, Link } from "@inertiajs/vue3";
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus } from "oh-vue-icons/icons";
-addIcons(BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus);
+import { BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, HiSolidMoon, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash } from "oh-vue-icons/icons";
+addIcons(BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, HiSolidMoon, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash);
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import Header from "@/Layouts/Header/Header.vue";
 import HeaderLi from "@/Layouts/Header/HeaderLi.vue";
@@ -32,10 +32,6 @@ import ExportExcel from "@/Components/Buttons/ExportExcel.vue";
 import ExportPdf from "@/Components/Buttons/ExportPdf.vue";
 import DangerButton from "@/Components/Buttons/DangerButton.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
-import {
-    TrashIcon,
-    PlusIcon,
-} from "@heroicons/vue/24/solid";
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 const messages = {
@@ -71,8 +67,6 @@ createInertiaApp({
             .component("DataTable", DataTable)
             .component("Accordion", Accordion)
             .component("Badge", Badge)
-            .component("TrashIcon", TrashIcon)
-            .component("PlusIcon", PlusIcon)
             .component("ConfirmModel", ConfirmModel)
             .component("Btn", Btn)
             .component("TextInput", TextInput)

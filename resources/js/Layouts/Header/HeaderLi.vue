@@ -1,5 +1,4 @@
 <script setup>
-import { HomeIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
 const props = defineProps({
     url: {
         type: String,
@@ -25,12 +24,12 @@ const props = defineProps({
             :href="url"
             class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white"
         >
-            <HomeIcon class="w-5 h-5 me-2.5" />
+            <icon name="hi-solid-home" class="w-5 h-5 me-2.5" />
             {{ title }}
         </Link>
 
         <div v-else class="flex items-center">
-            <ChevronRightIcon class="w-5 h-5 text-gray-400" />
+            <icon name="hi-chevron-right" class="w-5 h-5 text-gray-400" />
             <Link
                 v-if="!isActive"
                 :href="url"

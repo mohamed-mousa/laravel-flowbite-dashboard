@@ -1,5 +1,4 @@
 <script setup>
-import { WrenchScrewdriverIcon, XMarkIcon } from "@heroicons/vue/24/solid";
 const props = defineProps({
     id: {
         type: String,
@@ -23,7 +22,7 @@ const props = defineProps({
             id="drawer-label"
             class="inline-flex items-center mb-6 text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
         >
-            <WrenchScrewdriverIcon class="w-6 h-6 me-2.5" />
+            <icon name="fa-tools" class="w-6 h-6 me-2.5" />
             {{ title }}
         </h5>
         <div class="mb-6 mt-5">

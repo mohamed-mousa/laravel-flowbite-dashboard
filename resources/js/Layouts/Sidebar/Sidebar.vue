@@ -3,13 +3,6 @@ import SidebarLi from "./SidebarLi.vue";
 import SidebarDropdown from "./SidebarDropdown.vue";
 import setLang from "./setLang.vue";
 import { useCanShow } from "@/Composables/Permission.js";
-import {
-    UsersIcon,
-    MagnifyingGlassIcon,
-    ChartPieIcon,
-    NewspaperIcon,
-    Cog8ToothIcon,
-} from "@heroicons/vue/24/solid";
 
 const layoutsLinks = [
     { name: "Stacked", url: "profile.edit" },
@@ -38,7 +31,7 @@ const props = defineProps({
                             <form>
                                 <div class="relative">
                                     <div class="icon">
-                                        <MagnifyingGlassIcon />
+                                        <icon name="hi-search" />
                                     </div>
                                     <TextInput
                                         id="mobile-search"
@@ -53,7 +46,10 @@ const props = defineProps({
                             :title="$t('sidebar.dashboard')"
                             href="dashboard"
                         >
-                            <ChartPieIcon class="sidebar-li-icon" />
+                            <icon
+                                name="hi-solid-chart-pie"
+                                class="sidebar-li-icon"
+                            />
                         </SidebarLi>
 
                         <SidebarLi
@@ -61,7 +57,10 @@ const props = defineProps({
                             :title="$t('sidebar.users')"
                             href="users"
                         >
-                            <UsersIcon class="sidebar-li-icon" />
+                            <icon
+                                name="hi-solid-users"
+                                class="sidebar-li-icon"
+                            />
                         </SidebarLi>
 
                         <SidebarDropdown
@@ -69,7 +68,8 @@ const props = defineProps({
                             :links="layoutsLinks"
                             id="layouts-dropdown"
                         >
-                            <NewspaperIcon
+                            <icon
+                                name="hi-solid-newspaper"
                                 class="sidebar-li-dropdown-icon"
                                 aria-hidden="true"
                             />
@@ -79,7 +79,7 @@ const props = defineProps({
             </div>
             <div class="sidebar-bottom-menu" sidebar-bottom-menu>
                 <Link href="#" class="settings">
-                    <Cog8ToothIcon class="w-6 h-6" />
+                    <icon name="hi-solid-cog" class="w-6 h-6" />
                 </Link>
                 <setLang />
             </div>

@@ -1,6 +1,4 @@
-<script setup>
-import { AdjustmentsVerticalIcon, XMarkIcon } from "@heroicons/vue/24/solid";
-</script>
+<script setup></script>
 <template>
     <!-- drawer init and show -->
     <div class="text-center" data-tooltip-target="tooltip-default">
@@ -10,7 +8,7 @@ import { AdjustmentsVerticalIcon, XMarkIcon } from "@heroicons/vue/24/solid";
             data-drawer-show="multi-filter"
             aria-controls="multi-filter"
         >
-            <AdjustmentsVerticalIcon class="h-6 w-6" />
+            <icon name="hi-adjustments" class="h-6 w-6" />
         </span>
     </div>
     <div
@@ -33,7 +31,7 @@ import { AdjustmentsVerticalIcon, XMarkIcon } from "@heroicons/vue/24/solid";
             id="drawer-label"
             class="inline-flex items-center mb-6 text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
         >
-            <AdjustmentsVerticalIcon class="w-6 h-6 me-2.5" />
+            <icon name="hi-adjustments" class="w-6 h-6 me-2.5" />
             بحث متعدد
         </h5>
         <button
@@ -42,7 +40,7 @@ import { AdjustmentsVerticalIcon, XMarkIcon } from "@heroicons/vue/24/solid";
             aria-controls="multi-filter"
             class="absolute top-2.5 end-2.5 icon-style"
         >
-            <XMarkIcon class="w-6 h-6" />
+            <icon name="hi-solid-x" class="w-6 h-6" />
             <span class="sr-only">Close menu</span>
         </button>
         <div class="mb-6">

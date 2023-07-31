@@ -1,6 +1,4 @@
 <script setup>
-import { XMarkIcon } from "@heroicons/vue/24/solid";
-
 defineProps({
     drawer: {
         type: String,
@@ -15,7 +13,7 @@ defineProps({
         :aria-controls="drawer"
         class="inline-flex ms-4 justify-center text-gray-500 items-center bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
     >
-        <XMarkIcon class="w-5 h-5 -ms-1 sm:me-1" />
+        <icon name="hi-solid-x" class="w-5 h-5 -ms-1 sm:me-1" />
         {{ $t("cancel") }}
     </button>
 </template>

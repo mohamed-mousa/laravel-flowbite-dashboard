@@ -31,7 +31,7 @@ const deleteMultiAction = () => {
         data-tooltip-target="delete-multi-tooltip"
         :disabled="props.ids.length < 1"
     >
-        <TrashIcon class="h-6 w-6" />
+        <icon name="hi-solid-trash" class="h-6 w-6" />
     </Btn>
     <Tooltip id="delete-multi-tooltip" :title="$t('delete')" />
     <ConfirmModel :title="$t('delete confirm')" id="delete-multi">

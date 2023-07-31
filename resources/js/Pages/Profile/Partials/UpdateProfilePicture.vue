@@ -1,7 +1,4 @@
 <script setup>
-// hero icons
-import { ArrowUpOnSquareStackIcon } from "@heroicons/vue/24/solid";
-
 // Max file Upload alert
 import MaxUploadModal from "@/Components/Modals/MaxUploadModal.vue";
 
@@ -60,13 +57,13 @@ const avatarRemove = () => {
                         {{ $t("profile.picture size") }}
                     </div>
                     <div class="flex items-center space-s-4">
-
                         <!-- upload btn -->
                         <Btn
                             type="button"
                             class="inline-flex relative items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                         >
-                            <ArrowUpOnSquareStackIcon
+                            <icon
+                                name="HiCloudUpload"
                                 class="w-4 h-4 me-2 -ms-1"
                             />
                             {{ $t("profile.picture upload") }}

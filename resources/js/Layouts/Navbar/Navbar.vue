@@ -4,11 +4,6 @@ import Apps from "./Apps.vue";
 import DarkMode from "./DarkMode.vue";
 import Notifications from "./Notifications.vue";
 import Profile from "./Profile.vue";
-import {
-    Bars4Icon,
-    XMarkIcon,
-    MagnifyingGlassIcon,
-} from "@heroicons/vue/24/solid";
 
 defineEmits(["open"]);
 </script>
@@ -25,11 +20,13 @@ defineEmits(["open"]);
                         aria-controls="sidebar"
                         class="toggleSidebarMobile"
                     >
-                        <Bars4Icon
+                        <icon
+                            name="hi-view-list"
                             id="toggleSidebarMobileHamburger"
                             class="w-6 h-6"
                         />
-                        <XMarkIcon
+                        <icon
+                            name="hi-solid-x"
                             id="toggleSidebarMobileClose"
                             class="hidden w-6 h-6"
                         />
@@ -45,7 +42,8 @@ defineEmits(["open"]);
                             <div
                                 class="absolute inset-y-0 end-0 flex items-center pe-3 pointer-events-none"
                             >
-                                <MagnifyingGlassIcon
+                                <icon
+                                    name="hi-search"
                                     class="w-5 h-5 text-gray-500 dark:text-gray-400"
                                 />
                             </div>
@@ -66,7 +64,7 @@ defineEmits(["open"]);
                     >
                         <span class="sr-only">Search</span>
                         <!-- Search icon -->
-                        <MagnifyingGlassIcon class="w-6 h-6" />
+                        <icon name="hi-search" class="w-6 h-6" />
                     </Btn>
 
                     <!-- Notifications -->
