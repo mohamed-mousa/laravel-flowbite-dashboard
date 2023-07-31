@@ -1,4 +1,5 @@
 <script setup>
+// get page components
 import {
     UpdateProfileInformationForm,
     UpdatePasswordForm,
@@ -7,11 +8,15 @@ import {
 </script>
 
 <template>
+    <!-- browser title -->
     <Head :title="$t('profile.title')" />
 
+    <!-- Auth Layout -->
     <AuthLayout>
+        <!-- page header -->
         <template #header>
             <Header :title="$t('profile.title')">
+                <!-- Header list -->
                 <HeaderLi
                     :title="$t('sidebar.dashboard')"
                     :isHome="true"

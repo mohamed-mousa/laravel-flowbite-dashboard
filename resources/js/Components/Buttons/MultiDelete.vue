@@ -23,6 +23,7 @@ const deleteMultiAction = () => {
 
 <template>
     <Btn
+        v-if="props.ids.length > 0"
         class="icon-style"
         :class="{ 'cursor-not-allowed': props.ids.length < 1 }"
         data-modal-target="delete-multi"

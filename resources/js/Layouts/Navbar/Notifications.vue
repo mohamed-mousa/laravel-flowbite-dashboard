@@ -1,5 +1,5 @@
 <script setup>
-import { BellIcon, EyeIcon } from "@heroicons/vue/24/outline";
+import { BellIcon, EyeIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <template>

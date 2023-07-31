@@ -10,7 +10,10 @@
                 aria-expanded="false"
                 data-dropdown-toggle="profile-dropdown"
             >
-                <img src="/images/avatar.jpg" :alt="$page.props.user.name" />
+                <img
+                    :src="$page.props.user.avatar || '/images/avatar.jpg'"
+                    :alt="$page.props.user.name"
+                />
             </Btn>
         </div>
         <!-- Dropdown menu -->
@@ -35,6 +38,7 @@
                         :href="route('logout')"
                         as="button"
                         method="post"
+                        class="ps-4 py-1 dark:hover:bg-gray-600 text-start text-gray-600 dark:text-gray-300 hover:bg-gray-100 w-full"
                         role="menuitem"
                         >{{ $t("navbar.logout") }}</Link
                     >

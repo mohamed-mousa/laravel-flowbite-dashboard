@@ -9,12 +9,17 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { Head, Link } from "@inertiajs/vue3";
 
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+import { BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus } from "oh-vue-icons/icons";
+addIcons(BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus);
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import Header from "@/Layouts/Header/Header.vue";
 import HeaderLi from "@/Layouts/Header/HeaderLi.vue";
 import ConfirmModel from "@/Components/Modals/ConfirmModal.vue";
 
 import DataTable from "@/Components/Table/DataTable.vue";
+import Accordion from "@/Components/Table/Accordion.vue";
+import Badge from "@/Components/Badge.vue";
 import FlashMessages from "@/Components/FlashMessages.vue";
 import Tooltip from "@/Components/Tooltip.vue";
 import Checkbox from "@/Components/Form/Checkbox.vue";
@@ -23,12 +28,14 @@ import SelectInput from '@/Components/Form/SelectInput.vue'
 import InputLabel from "@/Components/Form/InputLabel.vue";
 import Btn from "@/Components/Buttons/Btn.vue";
 import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
+import ExportExcel from "@/Components/Buttons/ExportExcel.vue";
+import ExportPdf from "@/Components/Buttons/ExportPdf.vue";
 import DangerButton from "@/Components/Buttons/DangerButton.vue";
 import TextInput from "@/Components/Form/TextInput.vue";
 import {
     TrashIcon,
     PlusIcon,
-} from "@heroicons/vue/24/outline";
+} from "@heroicons/vue/24/solid";
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 const messages = {
@@ -53,12 +60,17 @@ createInertiaApp({
         });
         return createApp({ render: () => h(App, props) })
             .use(plugin)
+            .component("icon", OhVueIcon)
             .component("Checkbox", Checkbox)
             .component("InputError", InputError)
             .component("InputLabel", InputLabel)
             .component("PrimaryButton", PrimaryButton)
+            .component("ExportExcel", ExportExcel)
+            .component("ExportPdf", ExportPdf)
             .component("DangerButton", DangerButton)
             .component("DataTable", DataTable)
+            .component("Accordion", Accordion)
+            .component("Badge", Badge)
             .component("TrashIcon", TrashIcon)
             .component("PlusIcon", PlusIcon)
             .component("ConfirmModel", ConfirmModel)

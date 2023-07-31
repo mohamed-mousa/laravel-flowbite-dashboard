@@ -1,6 +1,7 @@
 <script setup>
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import { Link } from "@inertiajs/vue3";
+import NetworkStatus from "@/Components/NetworkStatus.vue";
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 onMounted(() => {
@@ -9,6 +10,8 @@ onMounted(() => {
 </script>
 
 <template>
+    <NetworkStatus />
+    <FlashMessages />
     <div
         class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900"
     >

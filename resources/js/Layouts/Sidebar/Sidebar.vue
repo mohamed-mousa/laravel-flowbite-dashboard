@@ -2,21 +2,34 @@
 import SidebarLi from "./SidebarLi.vue";
 import SidebarDropdown from "./SidebarDropdown.vue";
 import setLang from "./setLang.vue";
+import { useCanShow } from "@/Composables/Permission.js";
 import {
     UsersIcon,
     MagnifyingGlassIcon,
     ChartPieIcon,
     NewspaperIcon,
     Cog8ToothIcon,
-} from "@heroicons/vue/24/outline";
+} from "@heroicons/vue/24/solid";
 
 const layoutsLinks = [
     { name: "Stacked", url: "profile.edit" },
     { name: "Sidebar", url: "dashboard" },
 ];
+
+const props = defineProps({
+    openSideBar: {
+        type: Boolean,
+        default: true,
+    },
+});
 </script>
 <template>
-    <aside id="sidebar" class="sidebar" aria-label="sidebar">
+    <aside
+        id="sidebar"
+        :class="props.openSideBar ? 'lg:flex' : 'hidden lg:flex'"
+        class="sidebar"
+        aria-label="sidebar"
+    >
         <div class="sidebar-container">
             <div class="sidebar-links-container">
                 <div class="sidebar-links">
@@ -36,13 +49,18 @@ const layoutsLinks = [
                             </form>
                         </li>
                         <SidebarLi
+                            v-if="useCanShow([1, 2])"
                             :title="$t('sidebar.dashboard')"
                             href="dashboard"
                         >
                             <ChartPieIcon class="sidebar-li-icon" />
                         </SidebarLi>
 
-                        <SidebarLi :title="$t('sidebar.users')" href="users">
+                        <SidebarLi
+                            v-if="useCanShow([1])"
+                            :title="$t('sidebar.users')"
+                            href="users"
+                        >
                             <UsersIcon class="sidebar-li-icon" />
                         </SidebarLi>
 
@@ -69,7 +87,8 @@ const layoutsLinks = [
     </aside>
 
     <div
-        class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90"
+        :class="props.openSideBar ? '' : 'hidden'"
+        class="fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90"
         id="sidebarBackdrop"
     ></div>
 </template>

@@ -25,7 +25,7 @@ const submit = () => {
 
 <template>
     <NotAuthLayout>
-        <Head title="Log in" />
+        <Head :title="$t('login.title')" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}

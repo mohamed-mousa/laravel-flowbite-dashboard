@@ -24,7 +24,7 @@ class User extends Authenticatable
         'type',
         'phone',
         'avatar',
-        'status',
+        'active',
     ];
 
     /**
@@ -53,7 +53,6 @@ class User extends Authenticatable
         $query
             ->when($filters['keyword'] ?? null, function ($query, $keyword) {
                 $query->where('name', 'like', "%{$keyword}%");
-                $query->orWhere('email', 'like', "%{$keyword}%");
             });
     }
 }

@@ -3,6 +3,12 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+    optimizeDeps: {
+        exclude: ["oh-vue-icons/icons"]
+    },
+    ssr: {
+        noExternal: ["oh-vue-icons"]
+    },
     plugins: [
         laravel({
             input: 'resources/js/app.js',

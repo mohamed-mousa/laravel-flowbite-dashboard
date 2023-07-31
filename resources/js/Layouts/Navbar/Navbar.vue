@@ -8,7 +8,9 @@ import {
     Bars4Icon,
     XMarkIcon,
     MagnifyingGlassIcon,
-} from "@heroicons/vue/24/outline";
+} from "@heroicons/vue/24/solid";
+
+defineEmits(["open"]);
 </script>
 
 <template>
@@ -17,6 +19,7 @@ import {
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start">
                     <Btn
+                        @click="$emit('open')"
                         id="toggleSidebarMobile"
                         aria-expanded="true"
                         aria-controls="sidebar"

@@ -14,6 +14,10 @@
     "next" : "Next",
     "showing" : "Showing",
     "of" : "of",
+    "not active": "Sorry, your account is inactive",
+    "select all" : "Select all",
+    "export excel" : "Export excel",
+    "export pdf" : "Export pdf",
     "sidebar" : {
         "dashboard": "Dashboard",
         "users": "Users",
@@ -37,7 +41,7 @@
     "users": {
         "title" : "Users",
         "search" : "Search by username",
-        "create" : "Create user",
+        "create" : "Create",
         "username" : "Username",
         "type" : "Permission",
         "email" : "Email",
@@ -45,7 +49,7 @@
         "admin" : "Admin",
         "user" : "User",
         "created" : "Created at",
-        "status" : "Status"
+        "active" : "Active"
     },
     "profile" : {
         "link": "My profile",

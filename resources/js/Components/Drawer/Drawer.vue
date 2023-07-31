@@ -15,7 +15,7 @@ const props = defineProps({
     <!-- drawer component -->
     <div
         :id="id"
-        class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800 shadow-2xl"
+        class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
         tabindex="-1"
         :aria-labelledby="id + '-label'"
     >

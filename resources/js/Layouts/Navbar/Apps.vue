@@ -2,7 +2,7 @@
 import {
     ArrowLeftOnRectangleIcon,
     Squares2X2Icon,
-} from "@heroicons/vue/24/outline";
+} from "@heroicons/vue/24/solid";
 </script>
 
 <template>

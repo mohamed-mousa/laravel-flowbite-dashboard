@@ -19,7 +19,11 @@ include('route/users.php');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'active.user'])->name('dashboard');
+
+Route::get('/not-active-user', function () {
+    return Inertia::render('Auth/NotActive');
+})->name('not-active-user');
 
 
 require __DIR__ . '/auth.php';

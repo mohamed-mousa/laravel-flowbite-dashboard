@@ -35,6 +35,7 @@ const props = defineProps({
             >
                 <slot name="filter"> </slot>
             </div>
+            <slot name="badge"> </slot>
         </div>
     </div>
 </template>

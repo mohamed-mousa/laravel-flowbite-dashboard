@@ -11,19 +11,29 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as filtersRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use App\Exports\UsersExport;
+use PDF;
 
 class UserController extends Controller
 {
-    public function index()
+    public function clean_pagination($string)
     {
-        $filters = filtersRequest::all('keyword');
+        $string = str_replace(' ', '', $string);
+        $string = preg_replace('/[^0-9]/', '', $string);
+
+        return preg_replace('/-+/', '', $string);
+    }
+
+    public function index(Request $request)
+    {
+        $filters = filtersRequest::all('keyword', 'p');
         return Inertia::render('Users', [
             'filters' => $filters,
-            'users' => User::select('id', 'name', 'email', 'type', 'created_at', 'status')
+            'users' => User::select('id', 'name', 'email', 'type', 'created_at', 'active', 'avatar', 'phone')
                 ->whereNot('id', auth()->user()->id)
                 ->filter($filters)
                 ->orderBy('created_at', 'DESC')
-                ->paginate(20)->onEachSide(0)
+                ->paginate($this->clean_pagination($request->p))->onEachSide(0)
                 ->withQueryString()
         ]);
         return Inertia::render('Users');
@@ -34,7 +44,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'status' => $request->status,
+            'active' => $request->active,
             'type' => $request->type,
             'password' => Hash::make($request->password),
         ]);
@@ -42,13 +52,12 @@ class UserController extends Controller
         return Redirect::back()->with('success', __('messages.created'));
     }
 
-
     public function update(UpdateUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->status = $request->status;
+        $user->active = $request->active;
         $user->type = $request->type;
         if ($request->password) {
             $user->password = Hash::make($request->password);
@@ -57,12 +66,19 @@ class UserController extends Controller
         return Redirect::back()->with('success', __('messages.updated'));
     }
 
-
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
         return Redirect::back()->with('success', __('messages.deleted'));
+    }
+
+    public function active($id)
+    {
+        $user = User::findOrFail($id);
+        $user->active = !$user->active;
+        $user->save();
+        return Redirect::back()->with('success', __('messages.updated'));
     }
 
     public function delete(Request $request)
@@ -71,5 +87,26 @@ class UserController extends Controller
             User::whereIn('id', Arr::wrap($request->ids))->delete();
         }
         return Redirect::back()->with('success', __('messages.deleted'));
+    }
+
+    public function export(Request $request)
+    {
+        return (new UsersExport($request->data))->download('users.xlsx');
+    }
+
+    public function pdf(Request $request)
+    {
+        if ($request->data) {
+            $users = User::select('id', 'email', 'name', 'phone')->whereIn('id', $request->data)->get();
+        } else {
+            $users = User::select('id', 'email', 'name', 'phone')->get();
+        }
+
+        $pdf = PDF::loadView('pdf.users', ['users' => $users]);
+
+        return $pdf->download('users.pdf');
+
+        // return (new UsersExport($request->data))->download('users.pdf', \Maatwebsite\Excel\Excel::MPDF);
+
     }
 }

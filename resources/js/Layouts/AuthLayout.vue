@@ -4,6 +4,14 @@ import NavBar from "./Navbar/Navbar.vue";
 import NetworkStatus from "@/Components/NetworkStatus.vue";
 import Sidebar from "./Sidebar/Sidebar.vue";
 import { initFlowbite } from "flowbite";
+import { ref } from "vue";
+
+const open = ref(false);
+
+const openSideBarFunc = () => {
+    open.value = !open.value;
+};
+
 onMounted(() => {
     initFlowbite();
 });
@@ -15,9 +23,9 @@ onMounted(() => {
 
     <!-- Page Content -->
     <main class="bg-gray-50 dark:bg-gray-900">
-        <NavBar />
+        <NavBar @open="openSideBarFunc" />
         <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-            <Sidebar />
+            <Sidebar :openSideBar="open" />
 
             <div
                 id="main-content"

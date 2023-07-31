@@ -1,5 +1,5 @@
 <script setup>
-import { ChevronDownIcon } from "@heroicons/vue/24/outline";
+import { ChevronDownIcon } from "@heroicons/vue/24/solid";
 const props = defineProps({
     links: {
         type: Array,
