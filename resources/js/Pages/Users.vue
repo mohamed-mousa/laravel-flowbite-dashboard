@@ -581,7 +581,6 @@ const submit = () => {
                     class="paginate-input"
                     type="text"
                     v-model.number="filter.p"
-                    min="1"
                     required
                 />
             </template>

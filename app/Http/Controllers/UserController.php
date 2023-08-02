@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Request as filtersRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use App\Exports\UsersExport;
+use App\Notifications\UserCreated;
+use Illuminate\Support\Facades\Notification;
+
 use PDF;
 
 class UserController extends Controller
@@ -36,18 +39,20 @@ class UserController extends Controller
                 ->paginate($this->clean_pagination($request->p))->onEachSide(0)
                 ->withQueryString()
         ]);
-        return Inertia::render('Users');
     }
 
     public function store(StoreUserRequest $request)
     {
-        User::create([
+        $user =  User::create([
             'name' => $request->name,
             'email' => $request->email,
             'active' => $request->active,
             'type' => $request->type,
             'password' => Hash::make($request->password),
         ]);
+
+        $admins = User::where('type', 1)->get();
+        Notification::send($admins, new UserCreated('users.new user created', $user->name, "/users?keyword={$user->name}&p=20"));
 
         return Redirect::back()->with('success', __('messages.created'));
     }

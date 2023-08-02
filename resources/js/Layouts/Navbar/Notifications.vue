@@ -1,38 +1,20 @@
 <script setup></script>
 
 <template>
-    <button
-        type="button"
-        data-dropdown-toggle="notification-dropdown"
-        class="notifications-toggle"
-    >
+    <Link :href="route('notifications')" class="notifications-toggle relative">
         <icon name="hi-solid-bell" />
-    </button>
-    <!-- Dropdown menu -->
-    <div class="narbar-dropdowns" id="notification-dropdown">
-        <div class="title">
-            {{ $t("navbar.notifications") }}
-        </div>
-        <div>
-            <Link href="#" class="notification-link">
-                <div class="flex-shrink-0">
-                    <img src="/images/avatar.jpg" alt="Jese image" />
-                </div>
-                <div class="w-full ps-3">
-                    <div class="notification-container">
-                        New message from
-                        <span>Bonnie Green</span>: "Hey, what's up? All set for
-                        the presentation?"
-                    </div>
-                    <div class="notification-time">a few moments ago</div>
-                </div>
-            </Link>
-        </div>
-        <Link href="#" class="all-notifications-link">
-            <div>
-                <icon name="hi-solid-eye" />
-                {{ $t("navbar.all notifications") }}
-            </div>
-        </Link>
-    </div>
+        <span
+            v-if="$page.props.notification_count"
+            class="absolute flex h-5 w-5 translate-y-1/2 translate-x-1/2 start-auto -top-3 end-2"
+        >
+            <span
+                class="animate-ping absolute flex h-full w-full rounded-full bg-red-400 opacity-75"
+            ></span>
+            <span
+                class="relative flex justify-center items-center text-white text-xs font-extrabold rounded-full h-5 w-5 bg-red-500"
+            >
+                {{ $page.props.notification_count }}
+            </span>
+        </span>
+    </Link>
 </template>

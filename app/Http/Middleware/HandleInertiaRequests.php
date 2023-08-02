@@ -38,8 +38,14 @@ class HandleInertiaRequests extends Middleware
             $lang = 'ar';
         }
 
+        $notification_count = 0;
+        if (Auth()->user()) {
+            $notification_count = Auth()->user()->unreadNotifications->count();
+        }
+
         return array_merge(parent::share($request), [
             'user' => $request->user(),
+            'notification_count' => $notification_count,
             'flash' => function () use ($request) {
                 return [
                     'success' => $request->session()->get('success'),

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
@@ -15,7 +14,7 @@ Route::get('language/{lang}', function ($lang) {
 })->name('setlocale');
 
 include('route/users.php');
-
+include('route/notifications.php');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

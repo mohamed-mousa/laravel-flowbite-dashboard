@@ -44,12 +44,18 @@
         "title" : "Users",
         "search" : "Search by username",
         "username" : "Username",
+        "new user created" : "new user created",
         "type" : "Permission",
         "email" : "Email",
         "password" : "Password",
         "admin" : "Admin",
         "user" : "User",
         "active" : "Active"
+    },
+    "notifications": {
+        "title" : "Notifications",
+        "setAll" : "Mark all as read",
+        "set" : "Mark as read"
     },
     "profile" : {
         "link": "My profile",

@@ -8,7 +8,7 @@
     }
 
     .search-input-container {
-      @apply  relative w-64 mt-1 sm:w-72 xl:w-96;
+      @apply  relative w-56 mt-1 sm:w-72 xl:w-96;
     }
     
     .filter-options {
@@ -16,7 +16,7 @@
       }
 
       .filter-options .filter-inputs{
-        @apply  flex ps-2 space-x-1 ;
+        @apply  flex ps-2 space-x-1  ;
       }
 
       .toggleSidebarMobileSearch {
@@ -32,7 +32,7 @@
       }
 
       .main-nav{
-        @apply  fixed z-30 w-full bg-white lg:border-b border-t border-gray-200 dark:bg-gray-800 dark:border-gray-700 ;
+        @apply  fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 ;
       }
 
       .narbar-dropdowns {
@@ -188,7 +188,7 @@
       }
 
       .filter-container {
-        @apply flex items-center mb-4 sm:mb-0 
+        @apply flex items-center mb-4 sm:mb-0
       }
 
 

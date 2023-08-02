@@ -10,8 +10,8 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { Head, Link } from "@inertiajs/vue3";
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash } from "oh-vue-icons/icons";
-addIcons(HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash);
+import { HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash, IoCheckmarkDoneCircle } from "oh-vue-icons/icons";
+addIcons(HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash, IoCheckmarkDoneCircle);
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 

@@ -26,7 +26,7 @@ onMounted(() => {
     <main class="bg-gray-50 dark:bg-gray-900">
         <NavBar @open="openSideBarFunc" />
         <div
-            class="flex pb-16 lg:pb-0 lg:pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900"
+            class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900"
         >
             <Sidebar :openSideBar="open" />
 

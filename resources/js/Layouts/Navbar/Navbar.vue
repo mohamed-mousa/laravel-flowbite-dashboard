@@ -10,9 +10,9 @@ defineEmits(["open"]);
 </script>
 
 <template>
-    <nav class="main-nav lg:top-0 bottom-0 lg:bottom-auto">
+    <nav class="main-nav">
         <div class="px-3 py-3 lg:px-5 lg:ps-3">
-            <div class="flex items-center justify-evenly lg:justify-between">
+            <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start">
                     <button
                         type="button"
