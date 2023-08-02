@@ -10,28 +10,9 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { Head, Link } from "@inertiajs/vue3";
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, HiSolidMoon, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash } from "oh-vue-icons/icons";
-addIcons(BiFileEarmarkExcelFill, BiFileEarmarkPdfFill, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, HiSolidMoon, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash);
-import AuthLayout from "@/Layouts/AuthLayout.vue";
-import Header from "@/Layouts/Header/Header.vue";
-import HeaderLi from "@/Layouts/Header/HeaderLi.vue";
-import ConfirmModel from "@/Components/Modals/ConfirmModal.vue";
+import { HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash } from "oh-vue-icons/icons";
+addIcons(HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash);
 
-import DataTable from "@/Components/Table/DataTable.vue";
-import Accordion from "@/Components/Table/Accordion.vue";
-import Badge from "@/Components/Badge.vue";
-import FlashMessages from "@/Components/FlashMessages.vue";
-import Tooltip from "@/Components/Tooltip.vue";
-import Checkbox from "@/Components/Form/Checkbox.vue";
-import InputError from "@/Components/Form/InputError.vue";
-import SelectInput from '@/Components/Form/SelectInput.vue'
-import InputLabel from "@/Components/Form/InputLabel.vue";
-import Btn from "@/Components/Buttons/Btn.vue";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
-import ExportExcel from "@/Components/Buttons/ExportExcel.vue";
-import ExportPdf from "@/Components/Buttons/ExportPdf.vue";
-import DangerButton from "@/Components/Buttons/DangerButton.vue";
-import TextInput from "@/Components/Form/TextInput.vue";
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 const messages = {
@@ -57,27 +38,8 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .component("icon", OhVueIcon)
-            .component("Checkbox", Checkbox)
-            .component("InputError", InputError)
-            .component("InputLabel", InputLabel)
-            .component("PrimaryButton", PrimaryButton)
-            .component("ExportExcel", ExportExcel)
-            .component("ExportPdf", ExportPdf)
-            .component("DangerButton", DangerButton)
-            .component("DataTable", DataTable)
-            .component("Accordion", Accordion)
-            .component("Badge", Badge)
-            .component("ConfirmModel", ConfirmModel)
-            .component("Btn", Btn)
-            .component("TextInput", TextInput)
-            .component("SelectInput", SelectInput)
-            .component("FlashMessages", FlashMessages)
-            .component("Tooltip", Tooltip)
-            .component("AuthLayout", AuthLayout)
             .component("Head", Head)
             .component("Link", Link)
-            .component("Header", Header)
-            .component("HeaderLi", HeaderLi)
             .use(i18n)
             .use(ZiggyVue, Ziggy)
             .mount(el);

@@ -1,5 +1,12 @@
 <script setup>
 import NotAuthLayout from "@/Layouts/NotAuthLayout.vue";
+import {
+    InputError,
+    TextInput,
+    InputLabel,
+    Checkbox,
+} from "@/Components/Form/Form.js";
+import { Button } from "flowbite-vue";
 import { useForm } from "@inertiajs/vue3";
 defineProps({
     canResetPassword: {
@@ -76,12 +83,13 @@ const submit = () => {
                     >
                 </div>
             </div>
-            <PrimaryButton
-                :title="$t('login.button')"
+            <Button
                 class="ml-4"
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
-            />
+                :loading="form.processing"
+                >{{ $t("login.button") }}</Button
+            >
         </form>
     </NotAuthLayout>
 </template>

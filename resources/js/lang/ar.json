@@ -18,6 +18,9 @@
     "select all" : "تحديد الكل",
     "export excel" : "تصدير اكسل",
     "export pdf" : "تصدير pdf",
+    "create" : "اضافة ",
+    "created" : "تاريخ الاضافة",
+
     "sidebar" : {
         "dashboard": "لوحة التحكم",
         "users": "المستخدمين",
@@ -41,14 +44,12 @@
     "users": {
         "title" : "المستخدمين",
         "search" : "بحث باسم المستخدم",
-        "create" : "اضافة ",
         "username" : " اسم المستخدم",
         "email" : " البريد الالكتروني",
         "password" : " كلمة المرور",
         "admin" : "مدير",
         "user" : "مستخدم",
         "type" : "الصلاحية",
-        "created" : "تاريخ الاضافة",
         "active" : "نشط"
     },
     "profile" : {

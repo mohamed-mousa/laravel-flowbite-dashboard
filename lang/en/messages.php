@@ -3,8 +3,8 @@
 // lang/en/messages.php
 
 return [
-    "created" => "User created successfully",
-    "updated" => "User updated successfully",
+    "created" => "Created successfully",
+    "updated" => "Updated successfully",
     "deleted" => "Deleted successfully",
     "no permission" => "not authorized to this action",
     "users" => [

@@ -1,7 +1,6 @@
 <script setup>
 import SidebarLi from "./SidebarLi.vue";
 import SidebarDropdown from "./SidebarDropdown.vue";
-import setLang from "./setLang.vue";
 import { useCanShow } from "@/Composables/Permission.js";
 
 const layoutsLinks = [
@@ -33,7 +32,7 @@ const props = defineProps({
                                     <div class="icon">
                                         <icon name="hi-search" />
                                     </div>
-                                    <TextInput
+                                    <Input
                                         id="mobile-search"
                                         type="text"
                                         placeholder="Search"
@@ -76,12 +75,6 @@ const props = defineProps({
                         </SidebarDropdown>
                     </ul>
                 </div>
-            </div>
-            <div class="sidebar-bottom-menu" sidebar-bottom-menu>
-                <Link href="#" class="settings">
-                    <icon name="hi-solid-cog" class="w-6 h-6" />
-                </Link>
-                <setLang />
             </div>
         </div>
     </aside>

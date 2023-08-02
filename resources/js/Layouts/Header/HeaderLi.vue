@@ -22,14 +22,17 @@ const props = defineProps({
         <Link
             v-if="isHome"
             :href="url"
-            class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white"
+            class="inline-flex text-sm md:text-base items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white"
         >
-            <icon name="hi-solid-home" class="w-5 h-5 me-2.5" />
+            <icon name="hi-solid-home" class="w-4 h-4 md:w-4 md:h-4 me-2.5" />
             {{ title }}
         </Link>
 
         <div v-else class="flex items-center">
-            <icon name="hi-chevron-right" class="w-5 h-5 text-gray-400" />
+            <icon
+                name="hi-chevron-right"
+                class="w-4 h-4 md:w-4 md:h-4 text-gray-400"
+            />
             <Link
                 v-if="!isActive"
                 :href="url"
@@ -38,7 +41,7 @@ const props = defineProps({
                         ? ' text-gray-400  dark:text-gray-500'
                         : ' text-gray-700 hover:text-primary-600  dark:text-gray-300 dark:hover:text-white'
                 "
-                class="ms-1 md:ms-3"
+                class="ms-1 md:ms-3 text-sm md:text-base"
                 >{{ title }}</Link
             >
             <span
@@ -49,7 +52,7 @@ const props = defineProps({
                         ? ' text-gray-400  dark:text-gray-500'
                         : ' text-gray-700 hover:text-primary-600  dark:text-gray-300 dark:hover:text-white'
                 "
-                class="ms-1 md:ms-3"
+                class="ms-1 md:ms-3 text-sm md:text-base"
                 >{{ title }}</span
             >
         </div>

@@ -1,20 +1,20 @@
-<script setup></script>
+<script setup>
+import { Avatar } from "flowbite-vue";
+</script>
 
 <template>
     <!-- Profile -->
     <div class="flex items-center ms-3">
         <div>
-            <Btn
+            <button
+                type="button"
                 class="profile-toggle"
                 id="profile-menu"
                 aria-expanded="false"
                 data-dropdown-toggle="profile-dropdown"
             >
-                <img
-                    :src="$page.props.user.avatar || '/images/avatar.jpg'"
-                    :alt="$page.props.user.name"
-                />
-            </Btn>
+                <Avatar size="sm" :img="$page.props.user.avatar" rounded />
+            </button>
         </div>
         <!-- Dropdown menu -->
         <div class="profile-dropdown" id="profile-dropdown">

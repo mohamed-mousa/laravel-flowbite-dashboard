@@ -1,12 +1,13 @@
 <script setup></script>
 
 <template>
-    <Btn
+    <button
+        type="button"
         data-dropdown-toggle="notification-dropdown"
         class="notifications-toggle"
     >
         <icon name="hi-solid-bell" />
-    </Btn>
+    </button>
     <!-- Dropdown menu -->
     <div class="narbar-dropdowns" id="notification-dropdown">
         <div class="title">

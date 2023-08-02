@@ -4,7 +4,7 @@
 
 @layer components {
     .icon-style {
-      @apply inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
+      @apply inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ring-0 outline-0;
     }
 
     .search-input-container {
@@ -24,7 +24,7 @@
       }
 
       .website-title {
-        @apply  self-center text-xl font-semibold sm:inline hidden sm:text-2xl whitespace-nowrap dark:text-gray-300 ;
+        @apply  self-center text-xl font-semibold lg:inline hidden lg:text-2xl whitespace-nowrap dark:text-gray-300 ;
       }
 
       .toggleSidebarMobile {
@@ -32,7 +32,7 @@
       }
 
       .main-nav{
-        @apply  fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 ;
+        @apply  fixed z-30 w-full bg-white lg:border-b border-t border-gray-200 dark:bg-gray-800 dark:border-gray-700 ;
       }
 
       .narbar-dropdowns {
@@ -101,11 +101,11 @@
 
 
       .profile-toggle {
-        @apply flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 
+        @apply flex text-sm bg-gray-800 rounded-full
       }
 
       .profile-toggle img {
-        @apply w-8 h-8 rounded-full 
+        @apply w-8 h-8 rounded-full
       }
 
       .profile-dropdown {
@@ -136,11 +136,11 @@
       }
 
       .sidebar {
-        @apply fixed top-0 start-0 z-20 flex-col flex-shrink-0 w-64 h-full pt-16 font-normal duration-75 transition-width
+        @apply fixed top-0 start-0 z-20 flex-col flex-shrink-0 w-64 h-full pb-16 lg:pb-0 lg:pt-16 font-normal duration-75 transition-width
       }
 
       .sidebar-container {
-        @apply relative flex flex-col flex-1 min-h-0 pt-0 bg-white border-e border-gray-200 dark:bg-gray-800 dark:border-gray-700 
+        @apply relative flex flex-col flex-1 min-h-full pt-0 bg-white border-e border-gray-200 dark:bg-gray-800 dark:border-gray-700 
       }
 
       .sidebar-container .sidebar-links-container {
@@ -180,7 +180,7 @@
       }
 
       .sidebar .sidebar-links ul form .icon{
-        @apply absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none
+        @apply absolute inset-y-0 end-3 flex items-center pl-3 pointer-events-none
       }
 
       .sidebar .sidebar-links ul form .icon svg{
@@ -224,4 +224,36 @@
         @apply border sm:text-sm rounded-lg  w-16 text-center border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 inline p-2.5 bg-gray-50 dark:bg-gray-700
       }
 
+      .dropdown {
+        @apply z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-800 dark:divide-gray-600 border border-gray-200 dark:border-gray-600
+      }
+
+      .dropdown ul {
+        @apply py-2 text-sm text-gray-700 dark:text-gray-200
+      }
+
+      .small-show-accordion .panel {
+        @apply mb-3 border rounded-lg overflow-hidden border-gray-200 dark:border-gray-700
+      }
+
+      .small-show-accordion {
+        @apply px-1 pt-5 lg:hidden block 
+      }
+
+      .small-show-accordion .header {
+        @apply bg-white dark:bg-gray-800
+      }
+
   } 
+
+
+.small-show-accordion .header button.flex {
+  border: none;
+  padding: 10px 7px;
+  border-radius: 0;
+}
+
+.small-show-accordion .content div.border-b-0 {
+  border: none;
+  padding: 0;
+}

@@ -7,6 +7,7 @@
     "delete": "Delete",
     "delete confirm" : "Are you sure you want to delete",
     "edit": "Edit",
+    "create": "Create",
     "actions" : "Actions",
     "no data" : "No data found",
     "file large" : "Unable to upload because the file is too large",
@@ -18,6 +19,7 @@
     "select all" : "Select all",
     "export excel" : "Export excel",
     "export pdf" : "Export pdf",
+    "created" : "Created at",
     "sidebar" : {
         "dashboard": "Dashboard",
         "users": "Users",
@@ -41,14 +43,12 @@
     "users": {
         "title" : "Users",
         "search" : "Search by username",
-        "create" : "Create",
         "username" : "Username",
         "type" : "Permission",
         "email" : "Email",
         "password" : "Password",
         "admin" : "Admin",
         "user" : "User",
-        "created" : "Created at",
         "active" : "Active"
     },
     "profile" : {

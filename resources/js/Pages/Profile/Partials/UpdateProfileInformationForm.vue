@@ -1,7 +1,7 @@
 <script setup>
 // inertiajs and vue
 import { useForm, usePage } from "@inertiajs/vue3";
-
+import { InputError, TextInput, InputLabel } from "@/Components/Form/Form.js";
 // get auth user data
 const user = usePage().props.user;
 

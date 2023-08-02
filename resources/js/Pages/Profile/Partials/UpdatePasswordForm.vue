@@ -2,7 +2,7 @@
 // inertiajs and vue
 import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
-
+import { InputError, TextInput, InputLabel } from "@/Components/Form/Form.js";
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
 

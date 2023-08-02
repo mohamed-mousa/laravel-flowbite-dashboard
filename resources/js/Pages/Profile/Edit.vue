@@ -5,6 +5,8 @@ import {
     UpdatePasswordForm,
     UpdateProfilePicture,
 } from "./Partials/profile.js";
+
+import { AuthLayout, Header, HeaderLi } from "@/Layouts/Layout.js";
 </script>
 
 <template>
@@ -27,7 +29,7 @@ import {
             </Header>
         </template>
         <div
-            class="grid grid-cols-1 px-4 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900"
+            class="grid grid-cols-1 p-4 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900"
         >
             <UpdateProfilePicture />
             <div class="col-span-2">

@@ -22,6 +22,7 @@
     "dependencies": {
         "@vueuse/core": "^10.2.1",
         "flowbite": "^1.7.0",
+        "flowbite-vue": "^0.0.17-next.0",
         "lodash": "^4.17.21",
         "moment": "^2.29.4",
         "oh-vue-icons": "^1.0.0-rc3",

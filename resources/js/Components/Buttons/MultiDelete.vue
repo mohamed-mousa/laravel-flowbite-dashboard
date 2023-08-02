@@ -1,5 +1,8 @@
 <script setup>
 import { router } from "@inertiajs/vue3";
+import ConfirmModel from "@/Components/Modals/ConfirmModal.vue";
+import { Button } from "flowbite-vue";
+import Tooltip from "@/Components/Tooltip.vue";
 
 const props = defineProps({
     ids: Array,
@@ -22,26 +25,26 @@ const deleteMultiAction = () => {
 </script>
 
 <template>
-    <Btn
-        v-if="props.ids.length > 0"
+    <button
+        type="button"
         class="icon-style"
+        :disabled="props.ids.length < 1"
         :class="{ 'cursor-not-allowed': props.ids.length < 1 }"
         data-modal-target="delete-multi"
         data-modal-toggle="delete-multi"
         data-tooltip-target="delete-multi-tooltip"
-        :disabled="props.ids.length < 1"
     >
         <icon name="hi-solid-trash" class="h-6 w-6" />
-    </Btn>
+    </button>
     <Tooltip id="delete-multi-tooltip" :title="$t('delete')" />
     <ConfirmModel :title="$t('delete confirm')" id="delete-multi">
-        <Btn
+        <Button
             @click="deleteMultiAction()"
             :disabled="props.ids.length < 1"
             :class="{ 'opacity-25': props.ids.length < 1 }"
-            :title="$t('delete')"
             data-modal-hide="delete-multi"
-            class="confirm"
-        />
+            color="red"
+            >{{ $t("delete") }}</Button
+        >
     </ConfirmModel>
 </template>

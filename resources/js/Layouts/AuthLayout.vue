@@ -5,6 +5,7 @@ import NetworkStatus from "@/Components/NetworkStatus.vue";
 import Sidebar from "./Sidebar/Sidebar.vue";
 import { initFlowbite } from "flowbite";
 import { ref } from "vue";
+import FlashMessages from "@/Components/FlashMessages.vue";
 
 const open = ref(false);
 
@@ -24,7 +25,9 @@ onMounted(() => {
     <!-- Page Content -->
     <main class="bg-gray-50 dark:bg-gray-900">
         <NavBar @open="openSideBarFunc" />
-        <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        <div
+            class="flex pb-16 lg:pb-0 lg:pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900"
+        >
             <Sidebar :openSideBar="open" />
 
             <div

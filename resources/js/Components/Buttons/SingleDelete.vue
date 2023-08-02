@@ -1,5 +1,8 @@
 <script setup>
 import { router } from "@inertiajs/vue3";
+import ConfirmModel from "@/Components/Modals/ConfirmModal.vue";
+import { Button } from "flowbite-vue";
+import Tooltip from "@/Components/Tooltip.vue";
 
 const props = defineProps({
     id: Number,
@@ -30,11 +33,11 @@ const deleteAction = () => {
         :title="$t('delete confirm')"
         :id="'delete-single' + props.number + props.id"
     >
-        <Btn
+        <Button
             @click="deleteAction()"
-            :title="$t('delete')"
             :data-modal-hide="'delete-single' + props.number + props.id"
-            class="confirm"
-        />
+            color="red"
+            >{{ $t("delete") }}</Button
+        >
     </ConfirmModel>
 </template>

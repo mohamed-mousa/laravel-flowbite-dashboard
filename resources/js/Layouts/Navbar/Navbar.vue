@@ -1,19 +1,21 @@
 <script setup>
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import Apps from "./Apps.vue";
+import { Input } from "flowbite-vue";
 import DarkMode from "./DarkMode.vue";
 import Notifications from "./Notifications.vue";
 import Profile from "./Profile.vue";
+import SetLang from "./SetLang.vue";
 
 defineEmits(["open"]);
 </script>
 
 <template>
-    <nav class="main-nav">
+    <nav class="main-nav lg:top-0 bottom-0 lg:bottom-auto">
         <div class="px-3 py-3 lg:px-5 lg:ps-3">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-evenly lg:justify-between">
                 <div class="flex items-center justify-start">
-                    <Btn
+                    <button
+                        type="button"
                         @click="$emit('open')"
                         id="toggleSidebarMobile"
                         aria-expanded="true"
@@ -25,15 +27,10 @@ defineEmits(["open"]);
                             id="toggleSidebarMobileHamburger"
                             class="w-6 h-6"
                         />
-                        <icon
-                            name="hi-solid-x"
-                            id="toggleSidebarMobileClose"
-                            class="hidden w-6 h-6"
-                        />
-                    </Btn>
-                    <a href="/" class="flex me-2 md:me-24">
+                    </button>
+                    <a href="/" class="sm:flex hidden ms-2 md:me-11">
                         <ApplicationLogo
-                            class="w-12 h-12 me-3 fill-current text-gray-500"
+                            class="w-9 h-9 md:w-12 md:h-12 me-3 fill-current text-gray-500"
                         />
                         <span class="website-title">Clint name </span>
                     </a>
@@ -47,7 +44,7 @@ defineEmits(["open"]);
                                     class="w-5 h-5 text-gray-500 dark:text-gray-400"
                                 />
                             </div>
-                            <TextInput
+                            <Input
                                 id="topbar-search"
                                 type="text"
                                 class="mt-1 block w-full"
@@ -58,20 +55,10 @@ defineEmits(["open"]);
                 </div>
                 <div class="flex items-center">
                     <!-- Search mobile -->
-                    <Btn
-                        id="toggleSidebarMobileSearch"
-                        class="toggleSidebarMobileSearch"
-                    >
-                        <span class="sr-only">Search</span>
-                        <!-- Search icon -->
-                        <icon name="hi-search" class="w-6 h-6" />
-                    </Btn>
+                    <SetLang />
 
                     <!-- Notifications -->
                     <Notifications />
-
-                    <!-- Apps -->
-                    <Apps />
 
                     <!-- DarkMode -->
                     <DarkMode />

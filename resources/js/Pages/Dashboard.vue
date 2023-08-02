@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { AuthLayout } from "@/Layouts/Layout.js";
+</script>
 
 <template>
     <Head title="Dashboard" />

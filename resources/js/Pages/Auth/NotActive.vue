@@ -1,3 +1,6 @@
+<script setup>
+import NotAuthLayout from "@/Layouts/NotAuthLayout.vue";
+</script>
 <template>
     <NotAuthLayout>
         <Head title="Log in" />

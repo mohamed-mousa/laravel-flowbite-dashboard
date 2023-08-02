@@ -1,25 +1,35 @@
 <script setup>
-import {
-    Drawer,
-    DrawerButton,
-    DrawerCancel,
-    useHideDrawer,
-} from "@/Components/Drawer/Drawer.js";
-
-import Paginate from "@/Components/Table/Paginate.vue";
-
-// multi and single delete components
-import MultiDelete from "@/Components/Buttons/MultiDelete.vue";
-import SingleDelete from "@/Components/Buttons/SingleDelete.vue";
-
-// Format date & Multi select & filter data and composables
-import { useFormatDate } from "@/Composables/FormatDate.js";
-import { useMultiSelect } from "@/Composables/MultiSelect.js";
-import { useFilter } from "@/Composables/Filter.js";
-
-// inertiajs and vue
+import * as DrawerOption from "@/Components/Drawer/Drawer.js";
+import * as Delete from "@/Components/Buttons/Delete.js";
+import * as Form from "@/Components/Form/Form.js";
+import Export from "@/Components/Export/Export.vue";
+import DataTable from "@/Components/Table/DataTable.vue";
+import Filter from "@/Components/Filter/Filter.vue";
+import Tooltip from "@/Components/Tooltip.vue";
+import Badge from "@/Components/Badge.vue";
 import { useForm } from "@inertiajs/vue3";
-import { ref, reactive, onMounted } from "vue";
+import { reactive } from "vue";
+import { AuthLayout, Header, HeaderLi } from "@/Layouts/Layout.js";
+
+import {
+    Accordion,
+    AccordionPanel,
+    AccordionHeader,
+    AccordionContent,
+    Table,
+    TableHead,
+    TableBody,
+    TableHeadCell,
+    TableRow,
+    TableCell,
+    Button,
+    Avatar,
+} from "flowbite-vue";
+import {
+    useFormatDate,
+    useMultiSelect,
+    useFilter,
+} from "@/Composables/Composables.js";
 
 // get users and filters from backend
 const props = defineProps({
@@ -32,7 +42,7 @@ const filter = reactive({
     keyword: props.filters.keyword,
     p: props.filters.p,
 });
-useFilter(filter, "users");
+useFilter(filter.p, filter, "users");
 
 // user form data
 const form = useForm({
@@ -45,7 +55,7 @@ const form = useForm({
 });
 
 // edit action toggler
-const isEdit = ref(false);
+let isEdit = false;
 
 // use multi select composables
 const { selected, selectAll } = useMultiSelect(props.users.data);
@@ -55,12 +65,12 @@ const reset = () => {
     form.reset();
     form.clearErrors();
     selected.value = [];
-    isEdit.value = false;
+    isEdit = false;
 };
 
 // fill from with data on edit
 const editAction = (user) => {
-    isEdit.value = true;
+    isEdit = true;
     form.email = user.email;
     form.type = user.type;
     form.active = user.active;
@@ -70,11 +80,11 @@ const editAction = (user) => {
 
 const submit = () => {
     // update user data
-    if (isEdit.value) {
+    if (isEdit) {
         form.put(route("user.update", form.id), {
             onSuccess() {
                 reset();
-                useHideDrawer();
+                DrawerOption.useHideDrawer();
             },
         });
     }
@@ -88,15 +98,6 @@ const submit = () => {
         });
     }
 };
-
-// set pagination to 20 on page mounted
-onMounted(() => {
-    if (props.filters.p) {
-        filter.p = props.filters.p.replace(/\D/g, "");
-    } else {
-        filter.p = 20;
-    }
-});
 </script>
 
 <template>
@@ -108,84 +109,65 @@ onMounted(() => {
         <!-- page header -->
         <template #header>
             <Header :white="true" :title="$t('users.title')">
-                <!-- Header list -->
-                <HeaderLi
-                    :title="$t('sidebar.dashboard')"
-                    :isHome="true"
-                    :url="'dashboard'"
-                />
-                <HeaderLi :title="$t('users.title')" :isActive="true" />
+                <!-- page breadcrumb -->
+                <template #breadcrumb>
+                    <HeaderLi
+                        :title="$t('sidebar.dashboard')"
+                        :isHome="true"
+                        :url="'dashboard'"
+                    />
+                    <HeaderLi :title="$t('users.title')" :isActive="true" />
+                </template>
 
-                <!-- Header filter -->
+                <!-- filters and options -->
                 <template #filter>
-                    <!-- search input in Multi delete btn -->
-                    <div class="filter-container">
-                        <div class="sm:pe-3">
-                            <div class="search-input-container">
-                                <TextInput
-                                    v-model="filter.keyword"
-                                    type="text"
-                                    :placeholder="$t('users.search')"
-                                />
-                            </div>
-                        </div>
-                        <div class="filter-options">
-                            <div class="filter-inputs">
-                                <MultiDelete
-                                    url="users.destroy"
-                                    :ids="selected"
-                                    @deleted="reset()"
-                                />
-                                <button
-                                    id="dropdownMenuIconButton"
-                                    data-dropdown-toggle="dropdownDots"
-                                    class="icon-style"
-                                    type="button"
-                                >
-                                    <icon
-                                        class="w-7 h-7"
-                                        name="hi-solid-dots-vertical"
-                                    />
-                                </button>
+                    <Filter>
+                        <!-- search input  -->
+                        <template #input>
+                            <Form.TextInput
+                                v-model="filter.keyword"
+                                type="text"
+                                :placeholder="$t('users.search')"
+                            />
+                        </template>
 
-                                <!-- Dropdown menu -->
-                                <div
-                                    id="dropdownDots"
-                                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-                                >
-                                    <ul
-                                        class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                        aria-labelledby="dropdownMenuIconButton"
-                                    >
-                                        <ExportExcel
-                                            url="users.export"
-                                            :data="selected"
-                                        />
-                                        <ExportPdf
-                                            url="users.pdf"
-                                            :data="selected"
-                                        />
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <!-- options -->
+                        <template #options>
+                            <Delete.MultiDelete
+                                url="users.destroy"
+                                :ids="selected"
+                                @deleted="reset()"
+                            />
 
-                    <!-- create user Drawer btn -->
-                    <DrawerButton
-                        :title="$t('users.create')"
+                            <Export
+                                pdf="users.pdf"
+                                excel="users.export"
+                                :data="selected"
+                            />
+                        </template>
+                    </Filter>
+                </template>
+
+                <!-- create button and form -->
+                <template #button>
+                    <!-- create button -->
+                    <DrawerOption.DrawerButton
+                        :title="$t('create')"
                         drawer="users-drawer"
                         @click="reset"
                     >
                         <icon name="hi-plus" class="h-5 w-5 me-1" />
-                    </DrawerButton>
+                    </DrawerOption.DrawerButton>
 
-                    <!-- create user Drawer -->
-                    <Drawer id="users-drawer" :title="$t('users.create')">
+                    <!-- Drawer form -->
+                    <DrawerOption.Drawer
+                        id="users-drawer"
+                        :title="isEdit ? $t('edit') : $t('create')"
+                    >
                         <form @submit.prevent="submit">
                             <!-- name -->
                             <div class="mb-4">
-                                <TextInput
+                                <Form.TextInput
                                     type="text"
                                     v-model="form.name"
                                     :error="form.errors.name"
@@ -193,7 +175,7 @@ onMounted(() => {
                                     :placeholder="$t('users.username')"
                                     autocomplete="name"
                                 />
-                                <InputError
+                                <Form.InputError
                                     class="mt-2"
                                     :message="form.errors.name"
                                 />
@@ -201,7 +183,7 @@ onMounted(() => {
 
                             <!-- email -->
                             <div class="mb-4">
-                                <TextInput
+                                <Form.TextInput
                                     type="email"
                                     v-model="form.email"
                                     required
@@ -209,7 +191,7 @@ onMounted(() => {
                                     :placeholder="$t('users.email')"
                                     :error="form.errors.email"
                                 />
-                                <InputError
+                                <Form.InputError
                                     class="mt-2"
                                     :message="form.errors.email"
                                 />
@@ -217,13 +199,13 @@ onMounted(() => {
 
                             <!-- password -->
                             <div class="mb-4">
-                                <TextInput
+                                <Form.TextInput
                                     type="password"
                                     v-model="form.password"
                                     :placeholder="$t('users.password')"
                                     :error="form.errors.password"
                                 />
-                                <InputError
+                                <Form.InputError
                                     class="mt-2"
                                     :message="form.errors.password"
                                 />
@@ -231,7 +213,7 @@ onMounted(() => {
 
                             <!-- type -->
                             <div class="mb-4">
-                                <SelectInput
+                                <Form.SelectInput
                                     v-model.number="form.type"
                                     :error="form.errors.type"
                                 >
@@ -244,25 +226,29 @@ onMounted(() => {
                                     <option value="2">
                                         {{ $t("users.user") }}
                                     </option>
-                                </SelectInput>
+                                </Form.SelectInput>
                             </div>
 
                             <!-- submit btn -->
                             <div class="flex">
-                                <PrimaryButton
+                                <Button
                                     type="submit"
+                                    :disabled="form.processing"
                                     :loading="form.processing"
-                                    :title="$t('save')"
-                                />
-                                <DrawerCancel
+                                    >{{ $t("save") }}</Button
+                                >
+
+                                <!-- hide Drawer -->
+                                <DrawerOption.DrawerCancel
                                     @click="reset()"
                                     drawer="users-drawer"
                                 />
                             </div>
                         </form>
-                    </Drawer>
+                    </DrawerOption.Drawer>
                 </template>
 
+                <!-- search badge-->
                 <template #badge>
                     <Badge
                         @hide="filter.keyword = null"
@@ -272,212 +258,251 @@ onMounted(() => {
             </Header>
         </template>
 
-        <!-- page table -->
+        <!-- Data Table -->
         <DataTable
-            class="lg:flex hidden"
             :length="props.users.data.length"
             :total="props.users.total"
             :links="props.users.links"
         >
-            <!-- table head -->
-            <template #head>
-                <th>
-                    <Checkbox
-                        v-model:checked="selectAll"
-                        class="w-4 h-4"
-                        name="selectAll"
-                    />
-                </th>
-                <th>{{ $t("users.username") }}</th>
-                <th>{{ $t("users.type") }}</th>
-                <th>{{ $t("users.created") }}</th>
-                <th>{{ $t("users.active") }}</th>
-                <th>{{ $t("actions") }}</th>
-            </template>
-
-            <!-- table body -->
-            <template #body>
-                <tr v-for="user in props.users.data">
-                    <!-- Checkbox -->
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <Checkbox
-                                :value="user.id"
+            <!-- Data Table in large devices -->
+            <template #large>
+                <Table class="lg:flex hidden rounded-0">
+                    <!-- table head -->
+                    <table-head>
+                        <!-- select All -->
+                        <table-head-cell class="text-center rounded-0">
+                            <Form.Checkbox
+                                v-model:checked="selectAll"
                                 class="w-4 h-4"
-                                name="select"
-                                v-model:checked="selected"
+                                name="selectAll"
                             />
-                        </div>
-                    </td>
+                        </table-head-cell>
 
-                    <!-- name & email & image -->
-                    <td class="flex">
-                        <img
-                            class="w-10 h-10 rounded-full me-3"
-                            :src="user.avatar || '/images/avatar.jpg'"
-                            alt="avatar"
-                        />
-                        <div
-                            class="text-sm font-normal text-gray-500 dark:text-gray-400"
+                        <!-- table-head-cell name -->
+                        <table-head-cell
+                            class="text-start rounded-0"
+                            v-for="name in [
+                                'users.username',
+                                'users.type',
+                                'created',
+                                'users.active',
+                                'actions',
+                            ]"
                         >
-                            <div
-                                class="text-base font-semibold text-gray-900 dark:text-gray-400"
-                            >
-                                {{ user.name }}
-                            </div>
-                            <a
-                                :href="`mailto:${user.email}`"
-                                target="_blank"
-                                class="text-sm font-normal block text-gray-500 dark:text-gray-400"
-                            >
-                                {{ user.email }}
-                            </a>
-                            <a
-                                :href="`tel:${user.phone}`"
-                                target="_blank"
-                                class="text-sm font-normal block text-gray-500 dark:text-gray-400"
-                            >
-                                {{ user.phone }}
-                            </a>
-                        </div>
-                    </td>
+                            {{ $t(name) }}</table-head-cell
+                        >
+                    </table-head>
 
-                    <!-- type -->
-                    <td>
-                        <span v-if="user.type == 1">{{
-                            $t("users.admin")
-                        }}</span>
-                        <span v-if="user.type == 2">{{
-                            $t("users.user")
-                        }}</span>
-                    </td>
-
-                    <!-- created_at -->
-                    <td>
-                        {{ useFormatDate(user.created_at) }}
-                    </td>
-
-                    <!-- active -->
-                    <td>
-                        <div class="flex items-center">
-                            <label
-                                :for="'item-update-' + user.id"
-                                class="relative flex items-center cursor-pointer switch"
-                            >
-                                <input
-                                    @change="
-                                        form.post(route('user.active', user.id))
-                                    "
-                                    type="checkbox"
-                                    :id="'item-update-' + user.id"
-                                    class="sr-only"
-                                    :checked="user.active"
+                    <!-- table body -->
+                    <table-body>
+                        <table-row v-for="user in props.users.data">
+                            <!-- select user -->
+                            <table-cell class="text-center">
+                                <Form.Checkbox
+                                    :value="user.id"
+                                    class="w-4 h-4"
+                                    name="select"
+                                    v-model:checked="selected"
                                 />
+                            </table-cell>
+
+                            <!-- image & name & email -->
+                            <table-cell class="flex text-start">
+                                <Avatar
+                                    size="md"
+                                    :img="user.avatar"
+                                    class="me-3"
+                                    rounded
+                                />
+                                <div
+                                    class="text-sm font-normal text-gray-500 dark:text-gray-400"
+                                >
+                                    <div
+                                        class="text-base font-semibold text-gray-900 dark:text-gray-400"
+                                    >
+                                        {{ user.name }}
+                                    </div>
+                                    <a
+                                        :href="`mailto:${user.email}`"
+                                        target="_blank"
+                                        class="text-sm font-normal block text-gray-500 dark:text-gray-400"
+                                    >
+                                        {{ user.email }}
+                                    </a>
+                                    <a
+                                        :href="`tel:${user.phone}`"
+                                        target="_blank"
+                                        class="text-sm font-normal block text-gray-500 dark:text-gray-400"
+                                    >
+                                        {{ user.phone }}
+                                    </a>
+                                </div>
+                            </table-cell>
+
+                            <!-- user type -->
+                            <table-cell class="text-start">
+                                <span v-if="user.type == 1">{{
+                                    $t("users.admin")
+                                }}</span>
+                                <span v-if="user.type == 2">{{
+                                    $t("users.user")
+                                }}</span>
+                            </table-cell>
+
+                            <!-- created at -->
+                            <table-cell class="text-start">{{
+                                useFormatDate(user.created_at)
+                            }}</table-cell>
+
+                            <!-- toggle user status -->
+                            <table-cell class="text-start">
+                                <div class="flex items-center">
+                                    <label
+                                        :for="'item-update-' + user.id"
+                                        class="relative flex items-center cursor-pointer switch"
+                                    >
+                                        <input
+                                            @change="
+                                                form.post(
+                                                    route(
+                                                        'user.active',
+                                                        user.id
+                                                    )
+                                                )
+                                            "
+                                            type="checkbox"
+                                            :id="'item-update-' + user.id"
+                                            class="sr-only"
+                                            :checked="user.active"
+                                        />
+                                        <span
+                                            class="h-6 bg-gray-200 border border-gray-200 rounded-full w-11 toggle-bg dark:bg-gray-700 dark:border-gray-600"
+                                        ></span>
+                                    </label>
+                                </div>
+                            </table-cell>
+
+                            <!-- actions -->
+                            <table-cell class="text-start">
+                                <!-- edit Action -->
                                 <span
-                                    class="h-6 bg-gray-200 border border-gray-200 rounded-full w-11 toggle-bg dark:bg-gray-700 dark:border-gray-600"
-                                ></span>
-                            </label>
-                        </div>
-                    </td>
+                                    data-drawer-target="users-drawer"
+                                    data-drawer-show="users-drawer"
+                                    aria-controls="users-drawer"
+                                    data-tooltip-target="edit-tooltip"
+                                    class="icon-style me-3"
+                                    @click="editAction(user)"
+                                >
+                                    <icon
+                                        name="fa-pen-square"
+                                        class="h-6 w-6"
+                                    />
+                                </span>
+                                <Tooltip
+                                    id="edit-tooltip"
+                                    :title="$t('edit')"
+                                />
 
-                    <!-- options -->
-                    <td>
-                        <span
-                            data-drawer-target="users-drawer"
-                            data-drawer-show="users-drawer"
-                            aria-controls="users-drawer"
-                            data-tooltip-target="edit-tooltip"
-                            class="icon-style me-3"
-                            @click="editAction(user)"
-                        >
-                            <icon name="fa-pen-square" class="h-6 w-6" />
-                        </span>
-                        <Tooltip id="edit-tooltip" :title="$t('edit')" />
-                        <SingleDelete
-                            url="user.destroy"
-                            number="lg"
-                            :id="user.id"
+                                <!-- Single Delete -->
+                                <Delete.SingleDelete
+                                    url="user.destroy"
+                                    number="lg"
+                                    :id="user.id"
+                                />
+                            </table-cell>
+                        </table-row>
+                    </table-body>
+                </Table>
+            </template>
+
+            <!-- Data Table in small devices -->
+            <template #small>
+                <Accordion always-close class="small-show-accordion">
+                    <!-- select All -->
+                    <div class="flex items-start pb-5 px-1">
+                        <Form.Checkbox
+                            v-model:checked="selectAll"
+                            class="w-4 h-4"
+                            name="selectAll"
                         />
-                    </td>
-                </tr>
-            </template>
-            <template #paginate>
-                <input
-                    class="paginate-input"
-                    type="text"
-                    v-model.number="filter.p"
-                    min="1"
-                    required
-                />
-            </template>
-        </DataTable>
-        <div class="lg:hidden block">
-            <div class="flex items-start px-4 pt-4">
-                <Checkbox
-                    v-model:checked="selectAll"
-                    class="w-5 h-5"
-                    name="selectAll"
-                />
-                <label
-                    for="remember"
-                    class="ms-3 text-base font-medium text-gray-900 dark:text-white"
-                >
-                    {{ $t("select all") }}</label
-                >
-            </div>
-
-            <Accordion :accordion="user.id" v-for="user in props.users.data">
-                <div class="flex items-center justify-start">
-                    <Checkbox
-                        :value="user.id"
-                        class="w-4 h-4 me-4"
-                        name="select"
-                        v-model:checked="selected"
-                    />
-                    <img
-                        class="w-10 h-10 rounded-full me-3"
-                        :src="user.avatar || '/images/avatar.jpg'"
-                        alt="avatar"
-                    />
-                    <div
-                        class="text-sm font-normal text-gray-500 dark:text-gray-400"
-                    >
-                        <div
-                            class="text-base font-semibold text-gray-900 dark:text-gray-400"
+                        <label
+                            for="remember"
+                            class="ms-3 text-sm font-medium text-gray-900 dark:text-white"
                         >
-                            {{ user.name }}
-                        </div>
+                            {{ $t("select all") }}
+                        </label>
                     </div>
-                </div>
-                <template #body>
-                    <div class="data-table">
-                        <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ $t("users.email") }}</td>
-                                        <td>{{ user.email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ $t("users.type") }}</td>
-                                        <td>
+                    <accordion-panel
+                        class="panel"
+                        v-for="user in props.users.data"
+                    >
+                        <!-- accordion header -->
+                        <accordion-header class="header">
+                            <!-- user image & name & select -->
+                            <div class="flex items-center justify-start">
+                                <Form.Checkbox
+                                    :value="user.id"
+                                    class="w-4 h-4 me-4"
+                                    name="select"
+                                    v-model:checked="selected"
+                                />
+                                <Avatar
+                                    size="sm"
+                                    :img="user.avatar"
+                                    class="me-3"
+                                    rounded
+                                />
+                                <div
+                                    class="text-sm font-normal text-gray-900 dark:text-gray-400"
+                                >
+                                    {{ user.name }}
+                                </div>
+                            </div>
+                        </accordion-header>
+                        <accordion-content class="content">
+                            <Table>
+                                <table-body>
+                                    <!-- email -->
+                                    <table-row>
+                                        <table-cell class="text-start">{{
+                                            $t("users.email")
+                                        }}</table-cell>
+                                        <table-cell>{{
+                                            user.email
+                                        }}</table-cell>
+                                    </table-row>
+
+                                    <!-- type -->
+                                    <table-row>
+                                        <table-cell class="text-start">{{
+                                            $t("users.type")
+                                        }}</table-cell>
+                                        <table-cell>
                                             <span v-if="user.type == 1">{{
                                                 $t("users.admin")
                                             }}</span>
                                             <span v-if="user.type == 2">{{
                                                 $t("users.user")
                                             }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ $t("users.created") }}</td>
-                                        <td>
+                                        </table-cell>
+                                    </table-row>
+
+                                    <!-- created at -->
+                                    <table-row>
+                                        <table-cell class="text-start">{{
+                                            $t("created")
+                                        }}</table-cell>
+                                        <table-cell>
                                             {{ useFormatDate(user.created_at) }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ $t("users.active") }}</td>
-                                        <td>
+                                        </table-cell>
+                                    </table-row>
+
+                                    <!-- status -->
+                                    <table-row>
+                                        <table-cell class="text-start">{{
+                                            $t("users.active")
+                                        }}</table-cell>
+                                        <table-cell>
                                             <div class="flex items-center">
                                                 <label
                                                     :for="
@@ -507,12 +532,16 @@ onMounted(() => {
                                                     ></span>
                                                 </label>
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </table-cell>
+                                    </table-row>
 
-                                    <tr>
-                                        <td>{{ $t("actions") }}</td>
-                                        <td>
+                                    <!-- actions -->
+                                    <table-row>
+                                        <table-cell class="text-start">{{
+                                            $t("actions")
+                                        }}</table-cell>
+                                        <table-cell>
+                                            <!-- edit Action -->
                                             <span
                                                 data-drawer-target="users-drawer"
                                                 data-drawer-show="users-drawer"
@@ -530,26 +559,32 @@ onMounted(() => {
                                                 id="edit-tooltip"
                                                 :title="$t('edit')"
                                             />
-                                            <SingleDelete
+
+                                            <!-- Single Delete -->
+                                            <Delete.SingleDelete
                                                 url="user.destroy"
                                                 number="sm"
                                                 :id="user.id"
                                             />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </template>
-            </Accordion>
-            <Paginate
-                :length="props.users.data.length"
-                :total="props.users.total"
-                :links="props.users.links"
-            >
-                hi
-            </Paginate>
-        </div>
+                                        </table-cell>
+                                    </table-row>
+                                </table-body>
+                            </Table>
+                        </accordion-content>
+                    </accordion-panel>
+                </Accordion>
+            </template>
+
+            <!-- Data Table paginate -->
+            <template #paginate>
+                <input
+                    class="paginate-input"
+                    type="text"
+                    v-model.number="filter.p"
+                    min="1"
+                    required
+                />
+            </template>
+        </DataTable>
     </AuthLayout>
 </template>

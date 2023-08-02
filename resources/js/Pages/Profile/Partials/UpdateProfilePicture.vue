@@ -1,6 +1,7 @@
 <script setup>
 // Max file Upload alert
 import MaxUploadModal from "@/Components/Modals/MaxUploadModal.vue";
+import { TextInput } from "@/Components/Form/Form.js";
 
 // inertiajs and vue
 import { useForm, router } from "@inertiajs/vue3";
@@ -58,13 +59,13 @@ const avatarRemove = () => {
                     </div>
                     <div class="flex items-center space-s-4">
                         <!-- upload btn -->
-                        <Btn
+                        <button
                             type="button"
                             class="inline-flex relative items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                         >
                             <icon
-                                name="HiCloudUpload"
-                                class="w-4 h-4 me-2 -ms-1"
+                                name="hi-cloud-upload"
+                                class="w-4 h-4 me-2 -ms-1 cursor-pointer"
                             />
                             {{ $t("profile.picture upload") }}
 
@@ -72,17 +73,19 @@ const avatarRemove = () => {
                                 type="file"
                                 accept="image/x-png,image/jpeg, image/jpg"
                                 @change="uploadAvatar"
-                                class="inset-0 w-100 h-100 opacity-0 absolute"
+                                class="inset-0 w-100 h-100 opacity-0 absolute cursor-pointer"
                             />
-                        </Btn>
+                        </button>
 
                         <!-- avatar remove btn -->
-                        <Btn
+                        <button
+                            type="button"
                             @click="avatarRemove"
                             v-if="$page.props.user.avatar"
-                            :title="$t('delete')"
                             class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                        />
+                        >
+                            {{ $t("delete") }}
+                        </button>
                     </div>
                 </div>
             </div>
