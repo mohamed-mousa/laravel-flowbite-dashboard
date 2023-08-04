@@ -2,6 +2,8 @@
 // inertiajs and vue
 import { useForm, usePage } from "@inertiajs/vue3";
 import { InputError, TextInput, InputLabel } from "@/Components/Form/Form.js";
+import { Button } from "flowbite-vue";
+
 // get auth user data
 const user = usePage().props.user;
 
@@ -19,7 +21,7 @@ const form = useForm({
         class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800"
     >
         <!-- component title -->
-        <h3 class="mb-4 text-xl font-semibold dark:text-white">
+        <h3 class="mb-4 text-sm md:text-lg font-semibold dark:text-white">
             {{ $t("profile.information") }}
         </h3>
         <form @submit.prevent="form.patch(route('profile.update'))">
@@ -67,13 +69,13 @@ const form = useForm({
 
                 <!-- submit btn -->
                 <div class="col-span-6 sm:col-full">
-                    <PrimaryButton
+                    <Button
                         type="submit"
                         :loading="form.processing"
                         :class="{ 'opacity-25': !form.isDirty }"
                         :disabled="!form.isDirty"
-                        :title="$t('save')"
-                    />
+                        >{{ $t("save") }}</Button
+                    >
                 </div>
             </div>
         </form>

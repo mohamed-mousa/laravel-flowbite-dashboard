@@ -110,6 +110,7 @@ class UserController extends Controller
         $pdf = PDF::loadView('pdf.users', ['users' => $users]);
 
         return $pdf->download('users.pdf');
+        // return $pdf->stream('users.pdf');
 
         // return (new UsersExport($request->data))->download('users.pdf', \Maatwebsite\Excel\Excel::MPDF);
 

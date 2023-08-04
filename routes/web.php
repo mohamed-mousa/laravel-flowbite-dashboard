@@ -15,6 +15,7 @@ Route::get('language/{lang}', function ($lang) {
 
 include('route/users.php');
 include('route/notifications.php');
+include('route/settings.php');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

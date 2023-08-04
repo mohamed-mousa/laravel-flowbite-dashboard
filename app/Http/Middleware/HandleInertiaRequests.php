@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 use Illuminate\Support\Facades\Session;
+use App\Models\SiteSetting;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -43,7 +44,13 @@ class HandleInertiaRequests extends Middleware
             $notification_count = Auth()->user()->unreadNotifications->count();
         }
 
+        $collection = SiteSetting::all();
+        $setting = $collection->flatMap(function ($collection) {
+            return [$collection->key => $collection->value];
+        });
+
         return array_merge(parent::share($request), [
+            'setting' => $setting,
             'user' => $request->user(),
             'notification_count' => $notification_count,
             'flash' => function () use ($request) {

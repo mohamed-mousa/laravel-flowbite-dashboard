@@ -29,4 +29,7 @@ Route::middleware(['auth', 'active.user'])->group(function () {
     Route::post('/profile', [ProfileController::class, 'avatar'])->name('profile.avatar');
     Route::delete('/profile-avatar-remove', [ProfileController::class, 'avatar_remove'])->name('profile.avatar.remove');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/profile-notification', [ProfileController::class, 'notification'])->name('profile.notification');
+    Route::post('/profile-alert', [ProfileController::class, 'alert'])->name('profile.alert');
 });

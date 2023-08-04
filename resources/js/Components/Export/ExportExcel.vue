@@ -12,7 +12,6 @@ const props = defineProps({
 
 <template>
     <a
-        target="_blank"
         class="block ms-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
         :href="
             route(props.url, {

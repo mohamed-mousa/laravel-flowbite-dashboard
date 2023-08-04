@@ -4,8 +4,10 @@
     <Link :href="route('notifications')" class="notifications-toggle relative">
         <icon name="hi-solid-bell" />
         <span
-            v-if="$page.props.notification_count"
-            class="absolute flex h-5 w-5 translate-y-1/2 translate-x-1/2 start-auto -top-3 end-2"
+            v-if="
+                $page.props.notification_count && $page.props.user.notification
+            "
+            class="absolute flex h-5 w-5 translate-y-1/2 translate-x-1/2 start-auto -top-2.5 end-3"
         >
             <span
                 class="animate-ping absolute flex h-full w-full rounded-full bg-red-400 opacity-75"

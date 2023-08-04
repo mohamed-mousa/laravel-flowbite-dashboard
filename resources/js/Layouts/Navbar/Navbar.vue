@@ -32,7 +32,9 @@ defineEmits(["open"]);
                         <ApplicationLogo
                             class="w-9 h-9 md:w-12 md:h-12 me-3 fill-current text-gray-500"
                         />
-                        <span class="website-title">Clint name </span>
+                        <span class="website-title">
+                            {{ $page.props.setting.name }}
+                        </span>
                     </a>
                     <form class="hidden lg:block lg:ps-3.5">
                         <div class="relative mt-1 lg:w-96">
@@ -48,20 +50,20 @@ defineEmits(["open"]);
                                 id="topbar-search"
                                 type="text"
                                 class="mt-1 block w-full"
-                                placeholder="Search"
+                                :placeholder="$t('search')"
                             />
                         </div>
                     </form>
                 </div>
                 <div class="flex items-center">
-                    <!-- Search mobile -->
-                    <SetLang />
-
                     <!-- Notifications -->
                     <Notifications />
 
                     <!-- DarkMode -->
                     <DarkMode />
+
+                    <!-- Search mobile -->
+                    <SetLang />
 
                     <!-- Profile -->
                     <Profile />

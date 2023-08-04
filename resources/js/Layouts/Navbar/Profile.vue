@@ -4,46 +4,46 @@ import { Avatar } from "flowbite-vue";
 
 <template>
     <!-- Profile -->
-    <div class="flex items-center ms-3">
-        <div>
-            <button
-                type="button"
-                class="profile-toggle"
-                id="profile-menu"
-                aria-expanded="false"
-                data-dropdown-toggle="profile-dropdown"
-            >
-                <Avatar size="sm" :img="$page.props.user.avatar" rounded />
-            </button>
+    <button
+        type="button"
+        class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+        id="profile-menu"
+        aria-expanded="false"
+        data-dropdown-toggle="profile-dropdown"
+    >
+        <Avatar size="sm" :img="$page.props.user.avatar" rounded />
+    </button>
+    <!-- <div>
+    </div> -->
+    <!-- Dropdown menu -->
+    <div class="profile-dropdown" id="profile-dropdown">
+        <div role="none">
+            <p class="name" role="none">
+                {{ $page.props.user.name }}
+            </p>
+            <p class="email" role="none">
+                {{ $page.props.user.email }}
+            </p>
         </div>
-        <!-- Dropdown menu -->
-        <div class="profile-dropdown" id="profile-dropdown">
-            <div role="none">
-                <p class="name" role="none">
-                    {{ $page.props.user.name }}
-                </p>
-                <p class="email" role="none">
-                    {{ $page.props.user.email }}
-                </p>
-            </div>
-            <ul role="none">
-                <li>
-                    <Link :href="route('profile.edit')" role="menuitem">{{
-                        $t("navbar.profile")
-                    }}</Link>
-                </li>
+        <ul role="none">
+            <li>
+                <Link :href="route('profile.edit')" role="menuitem">{{
+                    $t("navbar.profile")
+                }}</Link>
+            </li>
 
-                <li>
-                    <Link
-                        :href="route('logout')"
-                        as="button"
-                        method="post"
-                        class="ps-4 py-1 dark:hover:bg-gray-600 text-start text-gray-600 dark:text-gray-300 hover:bg-gray-100 w-full"
-                        role="menuitem"
-                        >{{ $t("navbar.logout") }}</Link
-                    >
-                </li>
-            </ul>
-        </div>
+            <li>
+                <Link
+                    :href="route('logout')"
+                    as="button"
+                    method="post"
+                    class="ps-4 py-1 dark:hover:bg-gray-600 text-start text-gray-600 dark:text-gray-300 hover:bg-gray-100 w-full"
+                    role="menuitem"
+                    >{{ $t("navbar.logout") }}</Link
+                >
+            </li>
+        </ul>
     </div>
+    <!-- <div class="flex items-center ms-3">
+    </div> -->
 </template>

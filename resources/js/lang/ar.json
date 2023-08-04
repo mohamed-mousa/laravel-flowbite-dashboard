@@ -10,6 +10,8 @@
     "delete confirm" : "هل أنت متأكد أنك تريد الحذف",
     "no data" : "لا توجد بيانات",
     "file large" : "تعذر الرفع لان حجم الملف كبير جدًا",
+    "max size" : "JPG أو GIF أو PNG أقصى حجم 2M  ",
+
     "previous" : "السابق",
     "next" : "التالي",
     "showing" : "عرض",
@@ -24,7 +26,8 @@
     "sidebar" : {
         "dashboard": "لوحة التحكم",
         "users": "المستخدمين",
-        "settings" : "صفحة الاعدادات"
+        "settings" : " الاعدادات",
+        "siteSettings" : "اعدادات عامة"
     },
     "login" : {
         "title" : "تسجيل الدخول للمنصة",
@@ -70,8 +73,23 @@
         "new" : "كلمة المرور الجديدة",
         "confirm" : "تاكيد كلمة المرور",
         "picture" : "صورة الملف الشخصي",
-        "picture size" : "JPG أو GIF أو PNG أقصى حجم 800K  ",
-        "picture upload" : "رفع صورة"
+        "picture upload" : "رفع صورة",
+        "alerts notifications" : "التنبيهات والإخطارات",
+        "notifications" : "إخطارات الشريط العلوي",
+        "alerts" : "تنبيهات العمليات"
+    },
+    "settings" : {
+        "general settings": "اعدادات عامة",
+        "site logo": "شعار الموقع",
+        "name" : "اسم الموقع",
+        "email" : "البريد الالكتروني",
+        "phone" : "رقم الهاتف",
+        "address" : "العنوان",
+        "logo" : "الشعار",
+        "logo upload" : "رفع الشعار",
+        "site cover": "خلفية الموقع",
+        "cover upload" : "رفع صورة الخلفية",
+        "side bar" : "شريط جانبي"
     }
 }
 

@@ -2,7 +2,9 @@
     <Transition mode="out-in">
         <div>
             <div
-                v-if="$page.props.flash.success && show"
+                v-if="
+                    $page.props.flash.success && show && $page.props.user.alert
+                "
                 id="alert-border-2"
                 class="flex fixed bottom-0 z-50 w-full justify-center text-center items-center p-4 text-white bg-green-500"
                 role="alert"
@@ -28,7 +30,8 @@
                 v-if="
                     ($page.props.flash.error ||
                         Object.keys($page.props.errors).length > 0) &&
-                    show
+                    show &&
+                    $page.props.user.alert
                 "
                 id="alert-border-2"
                 class="flex fixed bottom-0 z-50 w-full justify-center text-center items-center p-4 text-gray-100 dark:text-gray-200 bg-red-500"

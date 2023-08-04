@@ -13,7 +13,7 @@
     <!-- Invoice styling -->
     <style>
         body {
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            font-family: 'XBRiyaz', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
             text-align: center;
             color: #777;
         }
@@ -44,7 +44,7 @@
             border: 1px solid #eee;
             font-size: 16px;
             line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            font-family: 'XBRiyaz', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
             color: #555;
         }
 
@@ -125,8 +125,8 @@
                     <table>
                         <tr>
                             <td class="title">
-                                {{-- <img src="./images/logo.png" alt="Company logo"
-                                    style="width: 100%; max-width: 300px" /> --}}
+                                <img src="./images/pwa-192x192.png" alt="Company logo" style="width: 80px" />
+
                             </td>
 
                             <td>

@@ -14,17 +14,11 @@ use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
     public function edit(Request $request): Response
     {
         return Inertia::render('Profile/Edit');
     }
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
 
@@ -82,9 +76,6 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('success', __('messages.deleted'));
     }
 
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validate([
@@ -101,5 +92,21 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function alert()
+    {
+        User::where('id', auth()->id())->update([
+            'alert' => !auth()->user()->alert,
+        ]);
+        return Redirect::back()->with('success', __('messages.updated'));
+    }
+
+    public function notification()
+    {
+        User::where('id', auth()->id())->update([
+            'notification' => !auth()->user()->notification,
+        ]);
+        return Redirect::back()->with('success', __('messages.updated'));
     }
 }

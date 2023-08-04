@@ -12,7 +12,11 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if (auth()->user()->type == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

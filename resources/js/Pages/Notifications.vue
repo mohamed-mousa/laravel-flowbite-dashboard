@@ -16,7 +16,7 @@ const props = defineProps({
     <AuthLayout>
         <!-- page header -->
         <template #header>
-            <Header :white="true" :title="$t('notifications.title')">
+            <Header :title="$t('notifications.title')">
                 <!-- page breadcrumb -->
                 <template #breadcrumb>
                     <HeaderLi
@@ -33,14 +33,17 @@ const props = defineProps({
                 <!-- create button and form -->
                 <template #title-btn v-if="notifications.length > 0">
                     <!-- create button -->
-                    <Button class="md:mt-0 mt-4">
+                    <Button
+                        class="md:mt-0 mt-4"
+                        @click="router.post(route('notifications.set'))"
+                    >
                         {{ $t("notifications.setAll") }}
                     </Button>
                 </template>
             </Header>
         </template>
 
-        <div class="lg:px-8 px-5 lg:py-10 py-5">
+        <div class="px-4 lg:pb-10 pb-5">
             <h1
                 v-if="notifications.length < 1"
                 class="text-xl text-center py-10 font-semibold text-gray-500 dark:text-gray-300"

@@ -1,6 +1,6 @@
 <script setup>
 import ExportExcel from "./ExportExcel.vue";
-import ExportPdf from "./ExportExcel.vue";
+import ExportPdf from "./ExportPdf.vue";
 import { Dropdown, ListGroup, ListGroupItem } from "flowbite-vue";
 
 const props = defineProps({

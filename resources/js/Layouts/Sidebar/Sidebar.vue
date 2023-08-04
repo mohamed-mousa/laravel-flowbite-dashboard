@@ -4,8 +4,11 @@ import SidebarDropdown from "./SidebarDropdown.vue";
 import { useCanShow } from "@/Composables/Permission.js";
 
 const layoutsLinks = [
-    { name: "Stacked", url: "profile.edit" },
-    { name: "Sidebar", url: "dashboard" },
+    {
+        name: "sidebar.siteSettings",
+        url: "settings",
+        show: [1],
+    },
 ];
 
 const props = defineProps({
@@ -63,12 +66,12 @@ const props = defineProps({
                         </SidebarLi>
 
                         <SidebarDropdown
-                            :title="$t('layouts')"
+                            :title="$t('sidebar.settings')"
                             :links="layoutsLinks"
-                            id="layouts-dropdown"
+                            id="settings"
                         >
                             <icon
-                                name="hi-solid-newspaper"
+                                name="hi-solid-cog"
                                 class="sidebar-li-dropdown-icon"
                                 aria-hidden="true"
                             />

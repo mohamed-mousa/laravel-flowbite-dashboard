@@ -4,6 +4,7 @@
 /public/build
 /public/hot
 /public/images/avatar
+/public/images/settings
 /public/storage
 /storage/*.key
 /vendor

@@ -318,7 +318,7 @@ const submit = () => {
                                     class="text-sm font-normal text-gray-500 dark:text-gray-400"
                                 >
                                     <div
-                                        class="text-base font-semibold text-gray-900 dark:text-gray-400"
+                                        class="text-base font-semibold text-gray-900 dark:text-white"
                                     >
                                         {{ user.name }}
                                     </div>
@@ -453,7 +453,7 @@ const submit = () => {
                                     rounded
                                 />
                                 <div
-                                    class="text-sm font-normal text-gray-900 dark:text-gray-400"
+                                    class="text-sm font-bold text-gray-900 dark:text-white"
                                 >
                                     {{ user.name }}
                                 </div>

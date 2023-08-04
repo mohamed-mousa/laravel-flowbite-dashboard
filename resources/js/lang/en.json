@@ -11,6 +11,8 @@
     "actions" : "Actions",
     "no data" : "No data found",
     "file large" : "Unable to upload because the file is too large",
+    "max size" : "JPG, GIF or PNG. Max size of 2M",
+
     "previous" : "Previous",
     "next" : "Next",
     "showing" : "Showing",
@@ -23,7 +25,8 @@
     "sidebar" : {
         "dashboard": "Dashboard",
         "users": "Users",
-        "settings" : "Settings page"
+        "settings" : "Settings",
+        "siteSettings" : "General settings"
     },
     "login" : {
         "title" : "Sign in to platform",
@@ -69,7 +72,21 @@
         "new" : "New Password",
         "confirm" : "Confirm Password",
         "picture" : "Profile picture",
-        "picture size" : "JPG, GIF or PNG. Max size of 800K",
-        "picture upload" : "Upload picture"
+        "picture upload" : "Upload picture",
+        "alerts notifications" : "Alerts & Notifications",
+        "notifications" : "Top bar notifications",
+        "alerts" : "Operations alerts"
+    },
+    "settings" : {
+        "general settings": "General settings",
+        "email" : "Email",
+        "name" : "Site name",
+        "phone" : "Phone",
+        "address" : "Address",
+        "site logo": "Site logo",
+        "logo upload" : "Upload logo",
+        "site cover": "Site cover",
+        "cover upload" : "Upload cover",
+        "side bar" : "Side bar"
     }
 }

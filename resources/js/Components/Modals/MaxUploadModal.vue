@@ -11,7 +11,6 @@ const props = defineProps({
         class="hidden"
         data-modal-target="max-upload-modal"
         data-modal-toggle="max-upload-modal"
-        data-tooltip-target="max-upload-modal-tooltip"
     >
     </span>
     <div

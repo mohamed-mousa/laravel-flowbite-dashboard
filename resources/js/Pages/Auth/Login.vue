@@ -8,6 +8,8 @@ import {
 } from "@/Components/Form/Form.js";
 import { Button } from "flowbite-vue";
 import { useForm } from "@inertiajs/vue3";
+import SetLang from "@/Layouts/Navbar/SetLang.vue";
+
 defineProps({
     canResetPassword: {
         type: Boolean,
@@ -37,7 +39,7 @@ const submit = () => {
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
-
+        <!-- {{ $page.props.setting.logo }} -->
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
             {{ $t("login.title") }}
         </h2>
@@ -83,13 +85,16 @@ const submit = () => {
                     >
                 </div>
             </div>
-            <Button
-                class="ml-4"
-                :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
-                :loading="form.processing"
-                >{{ $t("login.button") }}</Button
-            >
+            <div class="flex justify-between items-center">
+                <Button
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                    :loading="form.processing"
+                    >{{ $t("login.button") }}</Button
+                >
+
+                <SetLang />
+            </div>
         </form>
     </NotAuthLayout>
 </template>
