@@ -12,7 +12,7 @@ defineProps(["length", "total", "links"]);
         v-if="length < 1"
         class="text-xl text-center py-10 font-semibold text-gray-500 dark:text-gray-300"
     >
-        <icon name="hi-solid-information-circle" class="w-7 h-7 mx-auto" />
+        <icon name="hi-information-circle" class="w-7 h-7 mx-auto" />
         {{ $t("no data") }}
     </h1>
 

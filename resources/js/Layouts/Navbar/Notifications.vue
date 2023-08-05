@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-    <Link :href="route('notifications')" class="notifications-toggle relative">
-        <icon name="hi-solid-bell" />
+    <Link :href="route('notifications')" class="icon-style relative">
+        <icon name="hi-bell" class="w-6 h-6" />
         <span
             v-if="
                 $page.props.notification_count && $page.props.user.notification

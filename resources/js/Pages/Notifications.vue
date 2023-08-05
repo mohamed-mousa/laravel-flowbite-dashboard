@@ -3,6 +3,8 @@ import { AuthLayout, Header, HeaderLi } from "@/Layouts/Layout.js";
 import { useFormatDate } from "@/Composables/Composables.js";
 import { Button, Badge } from "flowbite-vue";
 import { router } from "@inertiajs/vue3";
+import Tooltip from "@/Components/Tooltip.vue";
+
 const props = defineProps({
     notifications: Object,
 });
@@ -17,7 +19,6 @@ const props = defineProps({
         <!-- page header -->
         <template #header>
             <Header :title="$t('notifications.title')">
-                <!-- page breadcrumb -->
                 <template #breadcrumb>
                     <HeaderLi
                         :title="$t('sidebar.dashboard')"
@@ -29,7 +30,6 @@ const props = defineProps({
                         :isActive="true"
                     />
                 </template>
-
                 <!-- create button and form -->
                 <template #title-btn v-if="notifications.length > 0">
                     <!-- create button -->
@@ -48,22 +48,19 @@ const props = defineProps({
                 v-if="notifications.length < 1"
                 class="text-xl text-center py-10 font-semibold text-gray-500 dark:text-gray-300"
             >
-                <icon
-                    name="hi-solid-information-circle"
-                    class="w-7 h-7 mx-auto"
-                />
+                <icon name="hi-information-circle" class="w-7 h-7 mx-auto" />
                 {{ $t("no data") }}
             </h1>
             <ol
                 v-if="notifications.length > 0"
-                class="relative border-s border-gray-300 dark:border-gray-600"
+                class="relative border-s border-gray-300 dark:border-gray-700 rounded-lg"
             >
                 <li
-                    class="mb-5 ms-4 bg-white dark:bg-gray-800 p-3 rounded-lg border-gray-200 dark:border-gray-600 border"
+                    class="ps-8 bg-white dark:bg-gray-800 p-3 border-gray-200 dark:border-gray-700 border-y first-of-type:rounded-ss-lg last-of-type:rounded-es-lg border-e rounded-e-lg mb-4"
                     v-for="notification in notifications"
                 >
                     <div
-                        class="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 border border-gray-200 dark:border-gray-600 dark:bg-gray-600"
+                        class="absolute w-3 h-3 bg-gray-400 rounded-full mt-12 md:mt-8 -start-1.5 border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
                     ></div>
                     <time
                         class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
@@ -75,24 +72,30 @@ const props = defineProps({
                         >
                             {{ $t(notification.data.message) }}
 
-                            <Link
-                                :href="notification.data.url"
-                                class="sm:mt-0 mt-3"
-                            >
-                                <Badge type="green">{{
+                            <Link :href="notification.data.url">
+                                <Badge type="green" class="md:my-0 my-3">{{
                                     notification.data.title
                                 }}</Badge>
                             </Link>
                         </h3>
-                        <Button
+                        <span
                             @click="
                                 router.post(
                                     route('notification.set', notification.id)
                                 )
                             "
-                            color="alternative"
-                            >{{ $t("notifications.set") }}
-                        </Button>
+                            class="icon-style"
+                            data-tooltip-target="notifications-set"
+                        >
+                            <icon
+                                name="io-checkmark-done-circle"
+                                class="w-9 h-9"
+                            />
+                        </span>
+                        <Tooltip
+                            id="notifications-set"
+                            :title="$t('notifications.set')"
+                        />
                     </div>
                 </li>
             </ol>

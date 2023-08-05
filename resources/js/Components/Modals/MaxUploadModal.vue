@@ -26,12 +26,12 @@ const props = defineProps({
                     class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-hide="max-upload-modal"
                 >
-                    <icon name="hi-solid-x" class="w-8 h-8" />
+                    <icon name="hi-x" class="w-8 h-8" />
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="p-6 text-center">
                     <icon
-                        name="hi-solid-information-circle"
+                        name="hi-information-circle"
                         class="mx-auto mb-4 text-red-400 w-16 h-16 dark:text-red-200"
                     />
                     <h3

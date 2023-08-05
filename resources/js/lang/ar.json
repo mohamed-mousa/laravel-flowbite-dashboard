@@ -11,6 +11,7 @@
     "no data" : "لا توجد بيانات",
     "file large" : "تعذر الرفع لان حجم الملف كبير جدًا",
     "max size" : "JPG أو GIF أو PNG أقصى حجم 2M  ",
+    "picture upload" : "رفع صورة",
 
     "previous" : "السابق",
     "next" : "التالي",
@@ -73,7 +74,6 @@
         "new" : "كلمة المرور الجديدة",
         "confirm" : "تاكيد كلمة المرور",
         "picture" : "صورة الملف الشخصي",
-        "picture upload" : "رفع صورة",
         "alerts notifications" : "التنبيهات والإخطارات",
         "notifications" : "إخطارات الشريط العلوي",
         "alerts" : "تنبيهات العمليات"
@@ -86,9 +86,8 @@
         "phone" : "رقم الهاتف",
         "address" : "العنوان",
         "logo" : "الشعار",
-        "logo upload" : "رفع الشعار",
         "site cover": "خلفية الموقع",
-        "cover upload" : "رفع صورة الخلفية",
+        "top bar" : "شريط علوي",
         "side bar" : "شريط جانبي"
     }
 }

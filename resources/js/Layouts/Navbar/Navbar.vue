@@ -28,7 +28,7 @@ defineEmits(["open"]);
                             class="w-6 h-6"
                         />
                     </button>
-                    <a href="/" class="sm:flex hidden ms-2 md:me-11">
+                    <a href="/" class="flex ms-2 md:me-11">
                         <ApplicationLogo
                             class="w-9 h-9 md:w-12 md:h-12 me-3 fill-current text-gray-500"
                         />

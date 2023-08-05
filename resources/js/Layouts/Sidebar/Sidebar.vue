@@ -49,7 +49,7 @@ const props = defineProps({
                             href="dashboard"
                         >
                             <icon
-                                name="hi-solid-chart-pie"
+                                name="hi-chart-pie"
                                 class="sidebar-li-icon"
                             />
                         </SidebarLi>
@@ -60,7 +60,7 @@ const props = defineProps({
                             href="users"
                         >
                             <icon
-                                name="hi-solid-users"
+                                name="la-users-cog-solid"
                                 class="sidebar-li-icon"
                             />
                         </SidebarLi>
@@ -71,7 +71,7 @@ const props = defineProps({
                             id="settings"
                         >
                             <icon
-                                name="hi-solid-cog"
+                                name="hi-cog"
                                 class="sidebar-li-dropdown-icon"
                                 aria-hidden="true"
                             />

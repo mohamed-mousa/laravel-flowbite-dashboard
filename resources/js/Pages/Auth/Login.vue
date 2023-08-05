@@ -39,11 +39,11 @@ const submit = () => {
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
-        <!-- {{ $page.props.setting.logo }} -->
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
             {{ $t("login.title") }}
         </h2>
         <form class="mt-8 space-y-6" @submit.prevent="submit">
+            <!-- email -->
             <div>
                 <InputLabel for="email" :value="$t('login.email')" />
 
@@ -58,6 +58,8 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
+
+            <!-- password -->
             <div class="mt-4">
                 <InputLabel for="password" :value="$t('login.password')" />
 
@@ -72,6 +74,8 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
+
+            <!-- remember -->
             <div class="flex items-start">
                 <div class="flex items-center h-5">
                     <Checkbox name="remember" v-model:checked="form.remember" />
@@ -85,6 +89,8 @@ const submit = () => {
                     >
                 </div>
             </div>
+
+            <!-- submit button -->
             <div class="flex justify-between items-center">
                 <Button
                     :class="{ 'opacity-25': form.processing }"
@@ -92,7 +98,6 @@ const submit = () => {
                     :loading="form.processing"
                     >{{ $t("login.button") }}</Button
                 >
-
                 <SetLang />
             </div>
         </form>

@@ -108,7 +108,7 @@ const submit = () => {
     <AuthLayout>
         <!-- page header -->
         <template #header>
-            <Header :white="true" :title="$t('users.title')">
+            <Header :white="true" :title="$t('users.title')" class="pb-4">
                 <!-- page breadcrumb -->
                 <template #breadcrumb>
                     <HeaderLi
@@ -152,11 +152,10 @@ const submit = () => {
                 <template #button>
                     <!-- create button -->
                     <DrawerOption.DrawerButton
-                        :title="$t('create')"
                         drawer="users-drawer"
                         @click="reset"
                     >
-                        <icon name="hi-plus" class="h-5 w-5 me-1" />
+                        <icon name="hi-plus" class="h-5 w-5" />
                     </DrawerOption.DrawerButton>
 
                     <!-- Drawer form -->
@@ -266,11 +265,11 @@ const submit = () => {
         >
             <!-- Data Table in large devices -->
             <template #large>
-                <Table class="lg:flex hidden rounded-0">
+                <Table class="lg:flex hidden rounded-0 large">
                     <!-- table head -->
-                    <table-head>
+                    <table-head class="border-b dark:border-gray-600">
                         <!-- select All -->
-                        <table-head-cell class="text-center rounded-0">
+                        <table-head-cell class="text-start">
                             <Form.Checkbox
                                 v-model:checked="selectAll"
                                 class="w-4 h-4"
@@ -280,24 +279,25 @@ const submit = () => {
 
                         <!-- table-head-cell name -->
                         <table-head-cell
-                            class="text-start rounded-0"
+                            class="text-start"
                             v-for="name in [
                                 'users.username',
                                 'users.type',
                                 'created',
                                 'users.active',
-                                'actions',
                             ]"
                         >
                             {{ $t(name) }}</table-head-cell
                         >
+
+                        <table-head-cell></table-head-cell>
                     </table-head>
 
                     <!-- table body -->
                     <table-body>
                         <table-row v-for="user in props.users.data">
                             <!-- select user -->
-                            <table-cell class="text-center">
+                            <table-cell class="text-start">
                                 <Form.Checkbox
                                     :value="user.id"
                                     class="w-4 h-4"
@@ -359,7 +359,7 @@ const submit = () => {
                                 <div class="flex items-center">
                                     <label
                                         :for="'item-update-' + user.id"
-                                        class="relative flex items-center cursor-pointer switch"
+                                        class="relative flex items-center cursor-pointer"
                                     >
                                         <input
                                             @change="
@@ -383,18 +383,18 @@ const submit = () => {
                             </table-cell>
 
                             <!-- actions -->
-                            <table-cell class="text-start">
+                            <table-cell>
                                 <!-- edit Action -->
                                 <span
                                     data-drawer-target="users-drawer"
                                     data-drawer-show="users-drawer"
                                     aria-controls="users-drawer"
                                     data-tooltip-target="edit-tooltip"
-                                    class="icon-style me-3"
+                                    class="icon-style m-0"
                                     @click="editAction(user)"
                                 >
                                     <icon
-                                        name="fa-pen-square"
+                                        name="hi-pencil-alt"
                                         class="h-6 w-6"
                                     />
                                 </span>
@@ -460,7 +460,7 @@ const submit = () => {
                             </div>
                         </accordion-header>
                         <accordion-content class="content">
-                            <Table>
+                            <Table class="small-table">
                                 <table-body>
                                     <!-- email -->
                                     <table-row>
@@ -551,7 +551,7 @@ const submit = () => {
                                                 @click="editAction(user)"
                                             >
                                                 <icon
-                                                    name="fa-pen-square"
+                                                    name="hi-pencil-alt"
                                                     class="h-6 w-6"
                                                 />
                                             </span>

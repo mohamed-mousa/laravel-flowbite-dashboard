@@ -12,6 +12,7 @@
     "no data" : "No data found",
     "file large" : "Unable to upload because the file is too large",
     "max size" : "JPG, GIF or PNG. Max size of 2M",
+    "picture upload" : "Upload picture",
 
     "previous" : "Previous",
     "next" : "Next",
@@ -72,7 +73,6 @@
         "new" : "New Password",
         "confirm" : "Confirm Password",
         "picture" : "Profile picture",
-        "picture upload" : "Upload picture",
         "alerts notifications" : "Alerts & Notifications",
         "notifications" : "Top bar notifications",
         "alerts" : "Operations alerts"
@@ -84,9 +84,7 @@
         "phone" : "Phone",
         "address" : "Address",
         "site logo": "Site logo",
-        "logo upload" : "Upload logo",
         "site cover": "Site cover",
-        "cover upload" : "Upload cover",
         "side bar" : "Side bar"
     }
 }

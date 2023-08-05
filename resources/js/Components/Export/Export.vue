@@ -20,18 +20,20 @@ const props = defineProps({
 <template>
     <dropdown placement="right">
         <template #trigger>
-            <icon class="icon-style w-9 h-9" name="hi-solid-dots-vertical" />
+            <span class="icon-style">
+                <icon class="w-7 h-7" name="hi-cloud-download" />
+            </span>
         </template>
         <list-group>
             <list-group-item>
                 <template #prefix>
-                    <icon class="h-4 w-4" name="hi-solid-document-download" />
+                    <icon class="h-4 w-4" name="hi-document-download" />
                 </template>
                 <ExportPdf :url="props.pdf" :data="props.data" />
             </list-group-item>
             <list-group-item>
                 <template #prefix>
-                    <icon class="h-4 w-4" name="hi-solid-document-download" />
+                    <icon class="h-4 w-4" name="hi-document-download" />
                 </template>
                 <ExportExcel :url="props.excel" :data="props.data" />
             </list-group-item>

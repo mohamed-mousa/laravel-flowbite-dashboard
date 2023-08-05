@@ -10,8 +10,8 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { Head, Link } from "@inertiajs/vue3";
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash, IoCheckmarkDoneCircle } from "oh-vue-icons/icons";
-addIcons(HiSolidDocumentDownload, HiSolidDotsVertical, HiPlus, HiSolidUsers, HiSolidChartPie, HiSolidNewspaper, HiSearch, HiSolidCog, HiChevronDown, HiSolidHome, HiChevronRight, HiLogout, BiBox2Fill, MdDarkmodeRound, HiSolidSun, HiViewList, HiSolidX, HiSolidBell, HiSolidEye, HiCloudUpload, FaPenSquare, HiAdjustments, HiSolidInformationCircle, FaTools, RiLoader2Line, HiSolidTrash, IoCheckmarkDoneCircle);
+import { HiDocumentDownload, LaCloudUploadAltSolid, HiPlus, LaUsersCogSolid, HiChartPie, HiNewspaper, HiSearch, HiCog, HiChevronDown, HiHome, HiChevronRight, HiLogout, BiBox2Fill, HiMoon, HiSun, HiViewList, HiX, HiBell, HiEye, HiCloudDownload, HiAdjustments, HiInformationCircle, HiPencilAlt, RiLoader2Line, HiTrash, IoCheckmarkDoneCircle } from "oh-vue-icons/icons";
+addIcons(HiDocumentDownload, LaCloudUploadAltSolid, HiPlus, LaUsersCogSolid, HiChartPie, HiNewspaper, HiSearch, HiCog, HiChevronDown, HiHome, HiChevronRight, HiLogout, BiBox2Fill, HiMoon, HiSun, HiViewList, HiX, HiBell, HiEye, HiCloudDownload, HiAdjustments, HiInformationCircle, HiPencilAlt, RiLoader2Line, HiTrash, IoCheckmarkDoneCircle);
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 const messages = {

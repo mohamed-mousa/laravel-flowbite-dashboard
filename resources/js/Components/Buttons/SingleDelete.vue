@@ -22,7 +22,7 @@ const deleteAction = () => {
         :data-modal-toggle="'delete-single' + props.number + props.id"
         :data-tooltip-target="'delete-single-tooltip' + props.number + props.id"
     >
-        <icon name="hi-solid-trash" class="h-6 w-6" />
+        <icon name="hi-trash" class="h-6 w-6" />
     </span>
     <Tooltip
         :id="'delete-single-tooltip' + props.number + props.id"

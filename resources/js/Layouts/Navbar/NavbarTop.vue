@@ -98,7 +98,7 @@ const showMobileMenu = ref(false);
             >
                 <li class="mb-5 text-end">
                     <icon
-                        name="hi-solid-x"
+                        name="hi-x"
                         class="w-7 h-7"
                         @click="showMobileMenu = !showMobileMenu"
                     />

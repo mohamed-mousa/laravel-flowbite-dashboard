@@ -40,7 +40,7 @@
             aria-controls="multi-filter"
             class="absolute top-2.5 end-2.5 icon-style"
         >
-            <icon name="hi-solid-x" class="w-6 h-6" />
+            <icon name="hi-x" class="w-6 h-6" />
             <span class="sr-only">Close menu</span>
         </button>
         <div class="mb-6">

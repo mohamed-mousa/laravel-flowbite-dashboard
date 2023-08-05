@@ -24,7 +24,7 @@ const props = defineProps({
             :href="url"
             class="inline-flex text-sm md:text-base items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white"
         >
-            <icon name="hi-solid-home" class="w-4 h-4 md:w-4 md:h-4 me-2.5" />
+            <icon name="hi-home" class="w-4 h-4 md:w-4 md:h-4 me-2.5" />
             {{ title }}
         </Link>
 

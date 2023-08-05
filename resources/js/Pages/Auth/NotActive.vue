@@ -6,7 +6,7 @@ import NotAuthLayout from "@/Layouts/NotAuthLayout.vue";
         <Head title="Log in" />
 
         <div
-            class="flex flex-col justify-center items-center px-6 mx-auto h-screen xl:px-0 dark:bg-gray-900"
+            class="flex flex-col justify-center items-center px-6 mx-auto xl:px-0 dark:bg-gray-900"
         >
             <div class="block mb-5 md:max-w-md">
                 <img

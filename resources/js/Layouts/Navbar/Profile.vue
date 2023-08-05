@@ -6,7 +6,7 @@ import { Avatar } from "flowbite-vue";
     <!-- Profile -->
     <button
         type="button"
-        class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+        class="icon-style"
         id="profile-menu"
         aria-expanded="false"
         data-dropdown-toggle="profile-dropdown"

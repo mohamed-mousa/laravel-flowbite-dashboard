@@ -18,14 +18,14 @@ const props = defineProps({
             'bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800':
                 white,
         }"
-        class="p-4 block sm:flex items-center justify-between mt-1.5"
+        class="p-4 block sm:flex items-center justify-between mt-1.5 pb-0"
     >
         <div class="w-full mb-1">
             <div class="mb-4">
                 <nav class="flex mb-5" aria-label="Breadcrumb">
                     <slot name="breadcrumb" />
                 </nav>
-                <div class="md:flex md:justify-between">
+                <div class="md:flex md:justify-between my-5">
                     <h1
                         class="text-base font-semibold text-gray-900 sm:text-2xl dark:text-white"
                     >

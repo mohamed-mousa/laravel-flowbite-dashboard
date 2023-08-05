@@ -1,10 +1,10 @@
 <script setup>
-// get page components
 import MaxUploadModal from "@/Components/Modals/MaxUploadModal.vue";
 import { AuthLayout, Header, HeaderLi } from "@/Layouts/Layout.js";
 import { InputError, TextInput, InputLabel } from "@/Components/Form/Form.js";
 import { Button, Avatar } from "flowbite-vue";
 import { useForm, router } from "@inertiajs/vue3";
+import Tooltip from "@/Components/Tooltip.vue";
 
 const props = defineProps({
     setting: Object,
@@ -19,10 +19,12 @@ const form = useForm({
     phone: props.setting.phone,
 });
 
+// logo form
 const logo = useForm({
     file: null,
 });
 
+// cover form
 const cover = useForm({
     file: null,
 });
@@ -38,7 +40,7 @@ const uploadAvatar = (e) => {
     }
 };
 
-// upload logo action
+// upload cover action
 const uploadCover = (e) => {
     // check file size
     if (e.target.files[0].size > 2097152) {
@@ -84,9 +86,9 @@ const uploadCover = (e) => {
 
                 <!-- logo -->
                 <div
-                    class="p-3 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-3 dark:bg-gray-800"
+                    class="mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 p-2 dark:bg-gray-800"
                 >
-                    <div class="items-center flex space-s-4">
+                    <div class="items-start flex space-s-4">
                         <!-- logo image -->
                         <Avatar size="lg" :img="setting.logo" />
 
@@ -100,21 +102,21 @@ const uploadCover = (e) => {
 
                             <!-- picture size text -->
                             <div
-                                class="mb-4 text-sm text-gray-500 dark:text-gray-400"
+                                class="mb-2 text-sm text-gray-500 dark:text-gray-400"
                             >
                                 {{ $t("max size") }}
                             </div>
-                            <div class="flex items-center space-s-4">
+                            <div class="flex items-center space-s-2">
                                 <!-- upload btn -->
                                 <button
                                     type="button"
-                                    class="inline-flex relative items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                    class="icon-style relative"
+                                    data-tooltip-target="add-logo"
                                 >
                                     <icon
-                                        name="hi-cloud-upload"
-                                        class="w-4 h-4 me-2 -ms-1 cursor-pointer"
+                                        name="la-cloud-upload-alt-solid"
+                                        class="w-8 h-8 cursor-pointer"
                                     />
-                                    {{ $t("settings.logo upload") }}
 
                                     <TextInput
                                         type="file"
@@ -123,20 +125,29 @@ const uploadCover = (e) => {
                                         class="inset-0 w-100 h-100 opacity-0 absolute cursor-pointer"
                                     />
                                 </button>
+                                <Tooltip
+                                    id="add-logo"
+                                    :title="$t('picture upload')"
+                                />
 
                                 <!-- logo remove btn -->
                                 <button
                                     type="button"
+                                    data-tooltip-target="remove-logo"
                                     v-if="setting.logo"
                                     @click="
                                         router.delete(
                                             route('settings.logo.remove')
                                         )
                                     "
-                                    class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    class="icon-style"
                                 >
-                                    {{ $t("delete") }}
+                                    <icon name="hi-trash" class="h-6 w-6" />
                                 </button>
+                                <Tooltip
+                                    id="remove-logo"
+                                    :title="$t('delete')"
+                                />
                             </div>
                         </div>
                     </div>
@@ -144,9 +155,9 @@ const uploadCover = (e) => {
 
                 <!-- cover image -->
                 <div
-                    class="p-3 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-3 dark:bg-gray-800"
+                    class="mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 p-2 dark:bg-gray-800"
                 >
-                    <div class="items-center flex space-s-4">
+                    <div class="items-start flex space-s-4">
                         <!-- cover image -->
                         <Avatar size="lg" :img="setting.cover" />
 
@@ -160,22 +171,21 @@ const uploadCover = (e) => {
 
                             <!-- picture size text -->
                             <div
-                                class="mb-4 text-sm text-gray-500 dark:text-gray-400"
+                                class="mb-2 text-sm text-gray-500 dark:text-gray-400"
                             >
                                 {{ $t("max size") }}
                             </div>
-                            <div class="flex items-center space-s-4">
+                            <div class="flex items-center space-s-2">
                                 <!-- upload btn -->
                                 <button
                                     type="button"
-                                    class="inline-flex relative items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                    class="icon-style relative"
+                                    data-tooltip-target="add-cover"
                                 >
                                     <icon
-                                        name="hi-cloud-upload"
-                                        class="w-4 h-4 me-2 -ms-1 cursor-pointer"
+                                        name="la-cloud-upload-alt-solid"
+                                        class="w-8 h-8 cursor-pointer"
                                     />
-                                    {{ $t("settings.cover upload") }}
-
                                     <TextInput
                                         type="file"
                                         accept="image/x-png,image/jpeg, image/jpg"
@@ -183,20 +193,29 @@ const uploadCover = (e) => {
                                         class="inset-0 w-100 h-100 opacity-0 absolute cursor-pointer"
                                     />
                                 </button>
+                                <Tooltip
+                                    id="add-cover"
+                                    :title="$t('picture upload')"
+                                />
 
                                 <!-- cover remove btn -->
                                 <button
                                     type="button"
                                     v-if="setting.cover"
+                                    data-tooltip-target="remove-cover"
                                     @click="
                                         router.delete(
                                             route('settings.cover.remove')
                                         )
                                     "
-                                    class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    class="icon-style"
                                 >
-                                    {{ $t("delete") }}
+                                    <icon name="hi-trash" class="h-7 w-7" />
                                 </button>
+                                <Tooltip
+                                    id="remove-cover"
+                                    :title="$t('delete')"
+                                />
                             </div>
                         </div>
                     </div>
@@ -290,7 +309,7 @@ const uploadCover = (e) => {
                                 />
                             </div>
 
-                            <!-- address -->
+                            <!-- view -->
                             <div class="col-span-6 sm:col-span-3">
                                 <div
                                     class="flex items-center justify-start py-4"

@@ -11,10 +11,12 @@ import { router } from "@inertiajs/vue3";
                 {{ $t("profile.alerts notifications") }}
             </h3>
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
-                <!-- Item 1 -->
+                <!-- notifications -->
                 <div class="flex items-center justify-between py-4">
                     <div class="flex flex-col flex-grow">
-                        <div class="text-lg text-gray-600 dark:text-gray-400">
+                        <div
+                            class="text-sm md:text-base text-gray-600 dark:text-gray-400"
+                        >
                             {{ $t("profile.notifications") }}
                         </div>
                     </div>
@@ -34,10 +36,13 @@ import { router } from "@inertiajs/vue3";
                         ></span>
                     </label>
                 </div>
-                <!-- Item 2 -->
+
+                <!-- alerts -->
                 <div class="flex items-center justify-between py-4">
                     <div class="flex flex-col flex-grow">
-                        <div class="text-lg text-gray-600 dark:text-gray-400">
+                        <div
+                            class="text-sm md:text-base text-gray-600 dark:text-gray-400"
+                        >
                             {{ $t("profile.alerts") }}
                         </div>
                     </div>
